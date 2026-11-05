@@ -12,5 +12,5 @@
 - Security & regression review: No secrets, workflow, license, deployment or permission changes; relative links restricted to NN.html. No external dependencies. Generated file must be refreshed when JSON changes.
 - Risk & rollback: Browser compatibility not yet proven in Chromium; revert this PR to restore original HTTP-only fetch behavior if needed.
 - Follow-up: Run real Chromium file:// and HTTP regression, plus node --test tests/offline-catalog.test.cjs and python3 scripts/build_course_data.py --check.
-- Commit: pending
-- PR: pending
+- Commit: b252d2ab749f277d30bad943a4cd570cddbe7e52 (initial code and history commit)
+- PR: https://github.com/1998x-stack/economics-principles-tutorial/pull/1
