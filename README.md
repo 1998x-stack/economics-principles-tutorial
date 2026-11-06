@@ -6,7 +6,7 @@
 
 ## 🚀 快速开始
 
-无需安装任何依赖，直接用浏览器打开 `index.html` 即可在线阅读全部章节：
+无需安装任何依赖，直接用浏览器打开 `index.html` 即可离线阅读全部章节（无需 HTTP 服务器）：
 
 ```bash
 open index.html   # macOS
@@ -52,7 +52,10 @@ open index.html   # macOS
 economics-principles-tutorial/
 ├── index.html      # 课程主入口（在线阅读全部章节）
 ├── 01.html ~ 28.html   # 各章节正文
-├── courses.json    # 课程元数据（标题/章节/主题）
+├── courses.json    # 课程元数据（唯一数据源）
+├── courses-data.js # 由 JSON 生成的离线浏览器数据
+├── scripts/build_course_data.py # 离线数据生成与校验
+├── tests/offline-catalog.test.cjs # Node 内置测试
 └── theme.css       # 统一主题样式
 ```
 
@@ -65,3 +68,6 @@ economics-principles-tutorial/
 
 ---
 *本课程由 `economics-principles-tutorial/` 项目维护。*
+## 离线数据维护与测试
+
+修改 `courses.json` 后运行 `python3 scripts/build_course_data.py` 更新 `courses-data.js`；提交前运行 `python3 scripts/build_course_data.py --check` 和 `node --test tests/offline-catalog.test.cjs`（Node 18+）。课程目录无需启动本地服务器。
