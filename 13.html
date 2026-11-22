@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第13章 寡头与博弈论</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #ea580c; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #f97316; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fffbf5; border: 1px solid #fed7aa; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #9a3412; line-height: 1.6; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        .pgrid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; max-width: 560px; margin: 8px 0; }
+        .pgrid button { padding: 10px 12px; border-radius: 12px; background: #fff; }
+        .pgrid button[aria-pressed="true"] { background: #fee2e2; border-color: #dc2626; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        button:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        @media print { .sidebar, .footer-nav, .controls, .pgrid { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-<h2>第13章 寡头与博弈论</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第13章 寡头与博弈论</h1>
 
         <h2>13.1 寡头：少数人的游戏</h2>
 
@@ -80,7 +101,53 @@
             <tr><td><strong>降价</strong></td><td>A: 120亿, B: 20亿</td><td>A: 50亿, B: 50亿</td></tr>
         </table>
 
-        <p>现在问题来了：如果你是航空公司A的CEO，你会怎么选？</p>
+        <figure class="diagram" id="fig-payoff">
+            <svg viewBox="0 0 720 420" role="img" aria-labelledby="fig13-title fig13-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+                <title id="fig13-title">航空公司定价博弈的支付矩阵</title>
+                <desc id="fig13-desc">行为航空公司 A、列为航空公司 B，单元格内为双方利润。左图为“不降价”、右图为“降价”；上行为“不降价”、下行为“降价”。行与列的高亮显示 A、B 各自的占优策略均为降价，两者交点即纳什均衡。</desc>
+                <defs>
+                    <marker id="g-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#dc2626"/></marker>
+                </defs>
+                <text x="430" y="78" font-size="15" fill="#334155">航空公司 B 的降价占优（整列）</text>
+                <rect x="500" y="120" width="140" height="220" fill="#fdba74" fill-opacity="0.20"/>
+                <rect x="360" y="230" width="280" height="110" fill="#93c5fd" fill-opacity="0.20"/>
+                <rect x="500" y="230" width="140" height="110" fill="#fee2e2" fill-opacity="0.75" stroke="#dc2626" stroke-width="3"/>
+                <g stroke="#94a3b8" stroke-width="1.5">
+                    <line x1="360" y1="120" x2="640" y2="120"/><line x1="360" y1="230" x2="640" y2="230"/>
+                    <line x1="360" y1="340" x2="640" y2="340"/><line x1="360" y1="120" x2="360" y2="340"/>
+                    <line x1="500" y1="120" x2="500" y2="340"/><line x1="640" y1="120" x2="640" y2="340"/>
+                </g>
+                <text x="350" y="180" text-anchor="end" font-size="15" font-weight="700" fill="#7c2d12">不降价</text>
+                <text x="350" y="290" text-anchor="end" font-size="15" font-weight="700" fill="#7c2d12">降价</text>
+                <text x="430" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#7c2d12">不降价</text>
+                <text x="570" y="100" text-anchor="middle" font-size="15" font-weight="700" fill="#7c2d12">降价</text>
+                <g font-size="15" fill="#1e293b" text-anchor="middle">
+                    <text x="430" y="180">A 80 · B 80</text>
+                    <text x="570" y="180">A 20 · B 120</text>
+                    <text x="430" y="290">A 120 · B 20</text>
+                    <text x="570" y="290">A 50 · B 50</text>
+                </g>
+                <text x="570" y="318" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">纳什均衡</text>
+                <line x1="330" y1="175" x2="330" y2="285" stroke="#dc2626" stroke-width="2.5" marker-end="url(#g-arrow)"/>
+                <text x="330" y="160" text-anchor="middle" font-size="12" fill="#b91c1c">A 占优</text>
+                <line x1="430" y1="362" x2="570" y2="362" stroke="#dc2626" stroke-width="2.5" marker-end="url(#g-arrow)"/>
+                <text x="500" y="384" text-anchor="middle" font-size="12" fill="#b91c1c">B 占优</text>
+            </svg>
+            <figcaption>图 13-1：航空双头垄断的支付矩阵（单位：亿元）。无论对手如何选择，降价都能带来更高利润，因此“降价”对双方都是占优策略；两条占优策略的交点（降价，降价）即唯一的纯策略纳什均衡。数值取自正文示例。</figcaption>
+        </figure>
+
+        <div class="controls">
+            <span style="font-weight:600;color:#9a3412">选择策略组合：</span>
+        </div>
+        <div class="pgrid" role="group" aria-label="选择策略组合，检查是否为纳什均衡">
+            <button type="button" data-a="0" data-b="0" aria-pressed="false">A 不降价 · B 不降价</button>
+            <button type="button" data-a="0" data-b="1" aria-pressed="false">A 不降价 · B 降价</button>
+            <button type="button" data-a="1" data-b="0" aria-pressed="false">A 降价 · B 不降价</button>
+            <button type="button" data-a="1" data-b="1" aria-pressed="false">A 降价 · B 降价</button>
+        </div>
+        <p id="fig13-readout" aria-live="polite" style="font-weight:600;color:#0c4a6e">点击任意单元格，检查它是否为纳什均衡。</p>
+
+        <p>现在问题来了：如果你是航空公司 A 的 CEO，你会怎么选？点击上方任意单元格，看它是否稳定。</p>
 
         <h2>13.3 囚徒困境与纳什均衡</h2>
 
@@ -188,13 +255,47 @@ for profile in itertools.product(strategies['A'], strategies['B']):
 
         <p>寡头和博弈论为我们提供了一整套分析企业战略互动的工具。但与现实中大多数市场一样，企业的决策不仅涉及产品定价——它们还要决定雇佣多少人、使用多少资本、如何组织生产。这正是下一章的主题：<strong>生产要素市场</strong>。工资是如何决定的？为什么CEO的收入是普通工人的几百倍？劳动市场背后的经济学原理是什么？我们下一章见。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“寡头”一章中的博弈论与囚徒困境。</li>
+                <li>John F. Nash, “Equilibrium Points in n-Person Games”, <em>PNAS</em> 36(1), 1950. DOI: <a href="https://doi.org/10.1073/pnas.36.1.48">10.1073/pnas.36.1.48</a>——纳什均衡的原始定义。</li>
+            </ul>
+            <p>航空定价博弈的支付矩阵（80 / 120 / 50 亿元等）为教学示意数值，用于展示占优策略与纳什均衡，不代表任何真实航司的财务数据。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="12.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="14.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var P = { '0-0': [80, 80], '0-1': [20, 120], '1-0': [120, 20], '1-1': [50, 50] };
+        var out = document.getElementById('fig13-readout');
+        var btns = Array.prototype.slice.call(document.querySelectorAll('.pgrid button'));
+        if (!out || !btns.length) return;
+        function label(a, b) { return (a ? 'A 降价' : 'A 不降价') + ' · ' + (b ? 'B 降价' : 'B 不降价'); }
+        function check(a, b) {
+            var cur = P[a + '-' + b], altA = P[(1 - a) + '-' + b][0], altB = P[a + '-' + (1 - b)][1];
+            var s = '（' + label(a, b) + '）A 得 ' + cur[0] + ' 亿，B 得 ' + cur[1] + ' 亿。';
+            if (cur[0] >= altA && cur[1] >= altB) return s + '双方都无法单方面改进 ⟹ 这是纳什均衡。';
+            var who = [];
+            if (cur[0] < altA) who.push('A 可单方面改为' + (a ? '不降价' : '降价') + '多赚 ' + (altA - cur[0]) + ' 亿');
+            if (cur[1] < altB) who.push('B 可单方面改为' + (b ? '不降价' : '降价') + '多赚 ' + (altB - cur[1]) + ' 亿');
+            return s + who.join('；') + ' ⟹ 不是纳什均衡。';
+        }
+        btns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var a = Number(btn.getAttribute('data-a')), b = Number(btn.getAttribute('data-b'));
+                btns.forEach(function (o) { o.setAttribute('aria-pressed', o === btn ? 'true' : 'false'); });
+                out.textContent = check(a, b);
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
