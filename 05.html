@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第5章 弹性及其应用 · 经济学原理</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #ea580c; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #f97316; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fffbf5; border: 1px solid #fed7aa; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #9a3412; line-height: 1.6; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #9a3412; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #fdba74; background: #ffedd5; color: #9a3412; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .math-scroll { overflow-x: auto; margin: 12px 0; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,10 +62,10 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
+    </nav>
+    <main id="main" class="main-content">
 
-<h2>第5章 弹性及其应用</h2>
+<h1>第5章 弹性及其应用</h1>
 
 <p>大家好，我是你们的讲师。上一章我们学会了用供给-需求模型分析市场价格。但你可能会问：<strong>降价10%能带来多少额外销量？涨价会不会反而让总收入下降？</strong>要回答这些问题，我们需要引入一个极其实用的概念——<strong>弹性（elasticity）</strong>。</p>
 
@@ -100,6 +121,52 @@ print(f"食盐需求价格弹性 = {ed2:.2f}")
     <li><strong>市场范围</strong>：市场范围越小，弹性越大（如"蒙牛牛奶"比"所有牛奶"更有替代品）。</li>
     <li><strong>时间跨度</strong>：长期弹性 > 短期弹性（消费者慢慢调整习惯）。</li>
 </ul>
+
+<figure class="diagram" id="fig-elasticity">
+            <svg viewBox="0 0 720 460" role="img" aria-labelledby="fig5-title fig5-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+                <title id="fig5-title">线性需求曲线上的价格弹性变化</title>
+                <desc id="fig5-desc">横轴为数量、纵轴为价格的线性需求曲线。曲线上半段富有弹性（弹性绝对值大于 1）、中点为单位弹性（等于 1）、下半段缺乏弹性（小于 1）；滑块可沿曲线移动，观察弹性与总收益的变化。</desc>
+                <defs><clipPath id="fig5-clip"><rect x="60" y="100" width="610" height="300"/></clipPath></defs>
+                <line x1="60" y1="100" x2="60" y2="400" stroke="#334155" stroke-width="2"/>
+                <line x1="60" y1="400" x2="670" y2="400" stroke="#334155" stroke-width="2"/>
+                <text x="18" y="108" font-size="15" fill="#334155">价格 P</text>
+                <text x="628" y="428" font-size="15" fill="#334155">数量 Q</text>
+                <g clip-path="url(#fig5-clip)">
+                    <line x1="60" y1="100" x2="660" y2="400" stroke="#1d4ed8" stroke-width="3"/>
+                    <line id="fig5-guide-h" x1="60" y1="160" x2="180" y2="160" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="6 5"/>
+                    <line id="fig5-guide-v" x1="180" y1="160" x2="180" y2="400" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="6 5"/>
+                </g>
+                <line x1="60" y1="250" x2="650" y2="250" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="4 4"/>
+                <circle cx="360" cy="250" r="6" fill="#0f172a"/>
+                <text x="370" y="244" font-size="13" font-weight="700" fill="#0f172a">|Ed| = 1（单位弹性）</text>
+                <circle id="fig5-pt" cx="180" cy="160" r="7" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+                <text x="96" y="132" font-size="15" font-weight="700" fill="#1d4ed8">富有弹性 |Ed| &gt; 1</text>
+                <text x="96" y="366" font-size="15" font-weight="700" fill="#1d4ed8">缺乏弹性 |Ed| &lt; 1</text>
+                <text x="596" y="148" font-size="15" font-weight="700" fill="#1d4ed8">D 需求</text>
+            </svg>
+            <figcaption>图 5-1：线性需求曲线上的弹性并非常数。高价格区间富有弹性（|Ed| &gt; 1），低价格区间缺乏弹性（|Ed| &lt; 1），中点为 |Ed| = 1；总收益在单位弹性处达到最大。曲线为教学示意，对应 Qd = 100 − 2P。</figcaption>
+        </figure>
+
+        <div class="controls" role="group" aria-label="价格与弹性控制">
+            <label for="fig5-slider">价格 P（元）</label>
+            <input id="fig5-slider" type="range" min="0" max="50" step="5" value="40" aria-describedby="fig5-readout">
+            <button type="button" data-p="40">富有弹性 P=40</button>
+            <button type="button" data-p="25">单位弹性 P=25</button>
+            <button type="button" data-p="10">缺乏弹性 P=10</button>
+            <output id="fig5-readout" aria-live="polite">P = 40 元，Q = 20，|Ed| = 4.00（富有弹性），总收益 TR = 800</output>
+        </div>
+
+        <div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="需求价格弹性公式，可横向滚动">
+            <math display="block" aria-label="需求价格弹性等于数量变化率除以价格变化率，也等于求导结果乘以价格比数量">
+                <mrow>
+                    <msub><mi>E</mi><mi>d</mi></msub><mo>=</mo>
+                    <mfrac><mrow><mi>Δ</mi><mi>Q</mi><mo>/</mo><mi>Q</mi></mrow><mrow><mi>Δ</mi><mi>P</mi><mo>/</mo><mi>P</mi></mrow></mfrac>
+                    <mo>=</mo>
+                    <mfrac><mrow><mi>d</mi><mi>Q</mi></mrow><mrow><mi>d</mi><mi>P</mi></mrow></mfrac><mo>·</mo>
+                    <mfrac><mi>P</mi><mi>Q</mi></mfrac>
+                </mrow>
+            </math>
+        </div>
 
 <h2>5.3 弹性与总收益</h2>
 
@@ -159,13 +226,48 @@ print(f"食盐需求价格弹性 = {ed2:.2f}")
 
 <p>下一章，我们将把弹性知识应用到政策分析中——当政府对市场进行干预（价格上限、价格下限、税收）时，弹性如何决定这些政策的后果？敬请期待第6章！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“弹性及其应用”一章（需求价格弹性、总收益与弹性关系）。</li>
+            </ul>
+            <p>图中需求函数 Qd = 100 − 2P 与正文苹果、食盐两组弹性数值均为教学示意构造，用于演示弹性计算与分类，不对应特定市场的真实统计数据。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="04.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="06.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var pt = document.getElementById('fig5-pt');
+        var gh = document.getElementById('fig5-guide-h');
+        var gv = document.getElementById('fig5-guide-v');
+        var readout = document.getElementById('fig5-readout');
+        var slider = document.getElementById('fig5-slider');
+        if (!pt || !slider) return;
+        // 坐标映射：P 每单位 6px（y=400−6P），Q 每单位 6px（x=60+6Q）；需求 Qd=100−2P
+        function draw(P) {
+            var Q = 100 - 2 * P, x = 60 + 6 * Q, y = 400 - 6 * P;
+            pt.setAttribute('cx', x); pt.setAttribute('cy', y);
+            gh.setAttribute('x2', x); gh.setAttribute('y1', y); gh.setAttribute('y2', y);
+            gv.setAttribute('x1', x); gv.setAttribute('x2', x); gv.setAttribute('y1', y);
+            var ed = Q > 0 ? 2 * P / Q : Infinity, tr = P * Q;
+            var kind = ed > 1.001 ? '富有弹性' : (ed < 0.999 ? '缺乏弹性' : '单位弹性');
+            var edTxt = isFinite(ed) ? ed.toFixed(2) : '∞';
+            readout.textContent = 'P = ' + P + ' 元，Q = ' + Q + '，|Ed| = ' + edTxt + '（' + kind + '），总收益 TR = ' + tr;
+        }
+        function setP(P) { slider.value = P; draw(Number(P)); }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { setP(b.getAttribute('data-p')); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
