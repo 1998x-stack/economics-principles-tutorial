@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第15章 外部性</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #ea580c; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #f97316; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fffbf5; border: 1px solid #fed7aa; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #9a3412; line-height: 1.6; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #9a3412; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #fdba74; background: #ffedd5; color: #9a3412; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .math-scroll { overflow-x: auto; margin: 12px 0; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-<h2>第15章 外部性</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第15章 外部性</h1>
 
         <h2>15.1 当你的行为影响到别人：外部性的世界</h2>
         <p>大家好，我是你们的讲师。前面几章我们学习了市场如何通过价格信号有效配置资源。在理想世界中，市场这只看不见的手会把一切安排得妥妥当当。但现实并非如此——你的行为经常会给别人带来你没有"买单"的后果。这就是本章的核心概念：<strong>外部性（Externality）</strong>。</p>
@@ -61,6 +82,48 @@
 
         <h3>污染：最经典的负外部性</h3>
         <p>一家化工厂生产每吨化工产品，工厂自身承担了原材料、劳动力、设备折旧等<strong>私人成本</strong>。但它排放的污水污染了下游的河流，影响了渔业和居民用水。这些污染造成的损害就是<strong>外部成本</strong>。如果工厂不需要为污染买单，它就会生产过多的产品——因为它的供给曲线只反映了私人成本，而非社会成本。</p>
+
+        <figure class="diagram" id="fig-externality">
+            <svg viewBox="0 0 720 460" role="img" aria-labelledby="fig15-title fig15-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+                <title id="fig15-title">负外部性下的市场产量与社会最优产量</title>
+                <desc id="fig15-desc">需求曲线 D 与私人边际成本 S 相交于市场均衡 Em，产量偏高；加上外部成本后的社会边际成本曲线 S社会 与需求相交于社会最优 Es，产量偏低。两者之间的小三角形为过度生产造成的无谓损失。</desc>
+                <defs><clipPath id="fig15-clip"><rect x="60" y="60" width="610" height="345"/></clipPath></defs>
+                <line x1="60" y1="60" x2="60" y2="400" stroke="#334155" stroke-width="2"/>
+                <line x1="60" y1="400" x2="670" y2="400" stroke="#334155" stroke-width="2"/>
+                <text x="18" y="66" font-size="15" fill="#334155">价格 P</text>
+                <text x="628" y="428" font-size="15" fill="#334155">数量 Q</text>
+                <g clip-path="url(#fig15-clip)">
+                    <polygon id="fig15-dwl" points="420,240 420,192 372,208" fill="#dc2626" fill-opacity="0.4"/>
+                    <line x1="60" y1="360" x2="660" y2="160" stroke="#ea580c" stroke-width="3"/>
+                    <line id="fig15-social" x1="60" y1="312" x2="660" y2="112" stroke="#ea580c" stroke-width="3" stroke-dasharray="9 6"/>
+                    <line x1="180" y1="80" x2="660" y2="400" stroke="#1d4ed8" stroke-width="3"/>
+                </g>
+                <circle cx="420" cy="240" r="6" fill="#0f172a"/>
+                <text x="430" y="236" font-size="14" font-weight="700" fill="#0f172a">Em</text>
+                <circle id="fig15-es" cx="372" cy="208" r="6" fill="#dc2626"/>
+                <text id="fig15-es-lab" x="300" y="202" font-size="14" font-weight="700" fill="#b91c1c">Es</text>
+                <text x="296" y="70" font-size="16" font-weight="700" fill="#1d4ed8">D 需求</text>
+                <text x="596" y="192" font-size="15" font-weight="700" fill="#ea580c">S 私人 MPC</text>
+                <text x="556" y="100" font-size="15" font-weight="700" fill="#c2410c">S 社会 MSC</text>
+                <text id="fig15-dwl-lab" x="396" y="256" font-size="13" font-weight="700" fill="#b91c1c">无谓损失</text>
+            </svg>
+            <figcaption>图 15-1：负外部性下的过度生产。私人供给曲线 S 只反映私人成本，市场在 Em 处生产过多；把外部成本加进来得到社会边际成本曲线 S社会，与需求相交于社会最优 Es。红色三角形为过度生产带来的无谓损失。坐标为教学示意。</figcaption>
+        </figure>
+
+        <div class="controls" role="group" aria-label="外部成本控制">
+            <label for="fig15-slider">单位外部成本 e（元）</label>
+            <input id="fig15-slider" type="range" min="0" max="10" step="1" value="6" aria-describedby="fig15-readout">
+            <button type="button" data-e="0">无外部性 0</button>
+            <button type="button" data-e="6">中度 6</button>
+            <button type="button" data-e="10">严重 10</button>
+            <output id="fig15-readout" aria-live="polite">e = 6 元 ⟹ 市场 Q = 60，社会最优 Q = 52，无谓损失 = 24</output>
+        </div>
+
+        <div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="社会边际成本公式，可横向滚动">
+            <math display="block" aria-label="社会边际成本等于私人边际成本加上外部边际成本">
+                <mrow><mi>MSC</mi><mo>=</mo><mi>MPC</mi><mo>+</mo><mi>MEC</mi></mrow>
+            </math>
+        </div>
 
         <h3>交通拥堵：你上路，大家慢</h3>
         <p>早晚高峰你决定开车上路。你的决策只考虑了自己的出行成本（油费、时间），但你的车让拥堵增加了那么一点点——成百上千人每人多等几秒钟，累积起来的社会成本远远大于你个人的收益。这就是为什么经济学家认为对拥堵路段征收<strong>拥堵费（Congestion Pricing）</strong>是合理的。</p>
@@ -171,13 +234,50 @@ Ps = 500 - 3×72 = 284 元/吨
 
         <p>在下一章中，我们将讨论另一类市场失灵——<strong>公共物品与公共资源</strong>。这些问题和外部性密切相关：为什么灯塔通常由政府提供？为什么公海里的鱼被过度捕捞？这些问题的答案将进一步完善我们对市场和政府角色的理解。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“外部性”一章中的私人成本、社会成本与矫正税。</li>
+                <li>北京市生态环境局历年《北京市生态环境状况公报》——PM2.5 年均浓度数据（2013 年与 2022 年）。</li>
+            </ul>
+            <p>图中“市场 Q = 60”与需求、供给函数为教学示意构造，用于演示负外部性导致的过度生产，不对应特定行业的真实数据。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="14.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="16.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var social = document.getElementById('fig15-social');
+        var es = document.getElementById('fig15-es');
+        var esLab = document.getElementById('fig15-es-lab');
+        var dwl = document.getElementById('fig15-dwl');
+        var readout = document.getElementById('fig15-readout');
+        var slider = document.getElementById('fig15-slider');
+        if (!social || !slider) return;
+        // 坐标映射：P=(400−y)/8，Q=(x−60)/6；需求 Qd=100−2P，私人供给 Qs=−20+4P
+        function draw(e) {
+            social.setAttribute('y1', 360 - 8 * e);
+            social.setAttribute('y2', 160 - 8 * e);
+            var Ps = (120 + 4 * e) / 6, Qs = 100 - 2 * Ps, x = 60 + 6 * Qs, y = 400 - 8 * Ps;
+            es.setAttribute('cx', x); es.setAttribute('cy', y);
+            esLab.setAttribute('x', x - 70); esLab.setAttribute('y', y - 6);
+            dwl.setAttribute('points', '420,240 420,' + (240 - 8 * e) + ' ' + x + ',' + y);
+            var dw = 0.5 * e * (60 - Qs);
+            readout.textContent = 'e = ' + e + ' 元 ⟹ 市场 Q = 60，社会最优 Q = ' + Qs.toFixed(0) + '，无谓损失 = ' + dw.toFixed(0);
+        }
+        function setE(e) { slider.value = e; draw(Number(e)); }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { setE(b.getAttribute('data-e')); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
