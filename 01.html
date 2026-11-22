@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第1章 经济学十大原理</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #ea580c; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #f97316; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fffbf5; border: 1px solid #fed7aa; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #9a3412; line-height: 1.6; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html" class="active">第1章 经济学十大原理</a></li>
@@ -41,10 +56,10 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
+    </nav>
+    <main id="main" class="main-content">
 
-<h2>第1章 经济学十大原理</h2>
+<h1>第1章 经济学十大原理</h1>
 
         <p>大家好，我是你们的讲师。今天我们要开启一段为期28章的学习旅程，进入一个你其实每天都在参与、却可能从未系统了解过的学科——<strong>经济学（economics）</strong>。</p>
 
@@ -66,6 +81,46 @@
         <p>理解了稀缺性，我们就理解了为什么经济学被称为"社会科学皇冠上的明珠"。它看似研究的是钱和市场，实际上研究的是<strong>选择</strong>——个人如何选择，企业如何选择，政府如何选择。</p>
 
         <p>现代经济学奠基人之一曼昆（N. Gregory Mankiw）将经济学思想归纳为<strong>十大原理</strong>。这十个原理就像十把钥匙，每一把都能打开一扇理解世界的大门。下面我们把它们分成三组来学习。</p>
+
+        <figure class="diagram" id="fig-ten-principles">
+            <svg viewBox="0 0 900 420" role="img" aria-labelledby="fig1-title fig1-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+                <title id="fig1-title">稀缺性引出的三类经济学原理</title>
+                <desc id="fig1-desc">左侧“稀缺性”通过三条箭头分出：个人决策（原理一至四）、人际互动（原理五至七）、整体经济运行（原理八至十）。</desc>
+                <defs>
+                    <marker id="fig1-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0 0 L10 5 L0 10 z" fill="#c2410c"/>
+                    </marker>
+                </defs>
+                <rect x="20" y="150" width="200" height="120" rx="16" fill="#fff7ed" stroke="#f97316" stroke-width="2.5"/>
+                <text x="120" y="196" text-anchor="middle" font-size="22" font-weight="700" fill="#7c2d12">稀缺性</text>
+                <text x="120" y="224" text-anchor="middle" font-size="14" fill="#9a3412">Scarcity</text>
+                <text x="120" y="250" text-anchor="middle" font-size="13" fill="#9a3412">欲望无限 · 资源有限</text>
+                <g stroke="#c2410c" stroke-width="2.5" fill="none" marker-end="url(#fig1-arrow)">
+                    <path d="M220 210 C280 210 290 86 350 86"/>
+                    <path d="M220 210 L350 210"/>
+                    <path d="M220 210 C280 210 290 334 350 334"/>
+                </g>
+                <g>
+                    <rect x="350" y="40" width="520" height="92" rx="14" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="2"/>
+                    <text x="372" y="72" font-size="18" font-weight="700" fill="#0c4a6e">Ⅰ 个人如何做决策（原理一~四）</text>
+                    <text x="372" y="100" font-size="15" fill="#0c4a6e">权衡取舍 · 机会成本 · 边际量 · 激励反应</text>
+                    <text x="372" y="122" font-size="13" fill="#0369a1">微观基础：稀缺 → 选择 → 权衡</text>
+                </g>
+                <g>
+                    <rect x="350" y="164" width="520" height="92" rx="14" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+                    <text x="372" y="196" font-size="18" font-weight="700" fill="#713f12">Ⅱ 人们如何相互交易（原理五~七）</text>
+                    <text x="372" y="224" font-size="15" fill="#713f12">贸易双赢 · 市场经济 · 政府矫正失灵</text>
+                    <text x="372" y="246" font-size="13" fill="#854d0e">协调机制：价格 → 分工 → 合作</text>
+                </g>
+                <g>
+                    <rect x="350" y="288" width="520" height="92" rx="14" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+                    <text x="372" y="320" font-size="18" font-weight="700" fill="#14532d">Ⅲ 整体经济如何运行（原理八~十）</text>
+                    <text x="372" y="348" font-size="15" fill="#14532d">生产率 · 货币与通胀 · 短期权衡</text>
+                    <text x="372" y="370" font-size="13" fill="#166534">宏观框架：增长 → 物价 → 就业</text>
+                </g>
+            </svg>
+            <figcaption>图 1-1：从“稀缺性”这个共同起点出发，十大原理可归为三个层次——个人决策、人际互动与整体经济运行。图示为教学示意，分支顺序对应曼昆《经济学原理》的编排逻辑。</figcaption>
+        </figure>
 
         <h2>人们如何做出决策（原理一~四）</h2>
 
@@ -200,13 +255,24 @@
 
         <p>带着这十把钥匙，你已经获得了理解后续所有章节的"路线图"。下一章，我们将学习经济学家具体是如何思考的——他们使用什么样的模型、数据和工具来分析世界。学会了这些"内功心法"之后，你就可以像一个经济学家那样去观察你身边的每一个经济现象了。我们下一章见！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》（Principles of Economics）中的“十大原理”框架——本章原理分组沿用其编排。</li>
+                <li>Adam Smith.《国富论》（An Inquiry into the Nature and Causes of the Wealth of Nations，1776）——“看不见的手”与市场协调。</li>
+                <li>Sam Peltzman, “The Effects of Automobile Safety Regulation”, <em>Journal of Political Economy</em> 83(4), 1975. DOI: <a href="https://doi.org/10.1086/260352">10.1086/260352</a>——安全带的“Peltzman 效应”。</li>
+            </ul>
+            <p>文中出现的具体价格、工资与比率（如学费、平均机票成本）均为教学示意，用于说明概念，不代表任何特定年份的真实统计数据。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="javascript:void(0)">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="02.html">下一章 →</a>
         </div>
 
-    </div>
+    </main>
+</div>
 </div>
 </div>
 </body>
