@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第12章 垄断竞争</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #6d28d9; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #4c1d95; border-left: 6px solid #8b5cf6; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #5b21b6; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #5b21b6; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #c4b5fd; background: #ede9fe; color: #5b21b6; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-<h2>第12章 垄断竞争</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第12章 垄断竞争</h1>
 
         <h2>12.1 垄断竞争：一个"混血"市场</h2>
 
@@ -122,7 +143,42 @@ def monopolistic_competition():
 
 monopolistic_competition()</code></pre>
 
-        <h2>12.4 过剩产能定理</h2>
+        <figure class="diagram" id="fig-mc">
+    <svg viewBox="0 0 700 460" role="img" aria-labelledby="fig12-title fig12-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig12-title">垄断竞争的长期均衡与过剩产能</title>
+        <desc id="fig12-desc">横轴为产量、纵轴为价格。需求曲线向下，MR 位于需求下方，MC 与 MR 的交点决定产量 Q*。长期中需求曲线与 ATC 相切，价格等于平均成本、经济利润为零；切点位于 ATC 最低点的左侧，两者之间的差距就是过剩产能。</desc>
+        <line x1="90" y1="60" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="70" font-size="14" fill="#334155">价格 P</text>
+        <text x="616" y="428" font-size="14" fill="#334155">产量 Q</text>
+        <polyline points="144,102.5 198,154.5 252,197 306,230 360,253.7 414,267.9 468,272.5 522,267.9 576,253.7 630,230" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <polyline points="144,159.2 198,248.9 252,310.3 306,343.3 360,348 414,324.5 468,272.5 522,192.2 576,83.6" fill="none" stroke="#16a34a" stroke-width="3"/>
+        <polyline id="demand-line" points="90,116.7 630,400" fill="none" stroke="#dc2626" stroke-width="3"/>
+        <polyline id="mr-line" points="90,116.7 360,400" fill="none" stroke="#f97316" stroke-width="3" stroke-dasharray="8 5"/>
+        <line id="q-guide" x1="306" y1="60" x2="306" y2="400" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="q-dot" cx="306" cy="230" r="6" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+        <line x1="306" y1="392" x2="468" y2="392" stroke="#7c3aed" stroke-width="2"/>
+        <line x1="306" y1="386" x2="306" y2="398" stroke="#7c3aed" stroke-width="2"/>
+        <line x1="468" y1="386" x2="468" y2="398" stroke="#7c3aed" stroke-width="2"/>
+        <text x="330" y="384" font-size="12" fill="#6d28d9">过剩产能</text>
+        <text x="96" y="110" font-size="15" font-weight="700" fill="#dc2626">需求 D</text>
+        <text x="366" y="382" font-size="15" font-weight="700" fill="#f97316">MR</text>
+        <text x="120" y="150" font-size="15" font-weight="700" fill="#0369a1">ATC</text>
+        <text x="548" y="92" font-size="15" font-weight="700" fill="#16a34a">MC</text>
+    </svg>
+    <figcaption>图 12-1：长期均衡时需求曲线与 ATC 相切（P = ATC，利润为零），而 MR = MC 的产量位于 ATC 最低点左侧，两者之差就是“过剩产能”。拖动滑杆模拟需求左移：从右侧（短期盈利）到切点（长期零利润）再到左侧（亏损退出）。（教学示意函数：需求 P = 20 − 2Q − s，ATC = ⅓(Q−7)² + 9。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="需求左移量控制">
+    <label for="s-slider">需求左移量 s（新企业进入使需求左移）</label>
+    <input id="s-slider" type="range" min="-3" max="1" step="0.5" value="0" aria-describedby="s-readout">
+    <button type="button" data-s="-2">短期盈利 s=−2</button>
+    <button type="button" data-s="0">长期零利润 s=0</button>
+    <button type="button" data-s="1">亏损退出 s=1</button>
+    <output id="s-readout" aria-live="polite">s = 0：Q* = 4.0，P* = 12.0，ATC = 12.0，利润 ≈ 0（长期零利润）。</output>
+</div>
+
+<h2>12.4 过剩产能定理</h2>
 
         <p>垄断竞争的长期均衡有一个有趣的性质：<strong>企业的生产量低于最低有效规模</strong>，即存在<strong>过剩产能（Excess Capacity）</strong>。换句话说，企业可以在更低的平均成本处生产更多——但它不这么做，因为多生产就需要降低价格，而这会损害利润。</p>
 
@@ -177,13 +233,58 @@ monopolistic_competition()</code></pre>
 
         <p>下一章我们将讨论最"烧脑"的一种市场结构——寡头。在那里，企业之间的<strong>战略互动</strong>成为了核心，博弈论将闪亮登场。我们下一章见。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“垄断竞争”一章（产品差异化、长期 P = ATC、过剩产能、广告与品牌）。</li>
+                <li>Edward Chamberlin (1933) 与 Joan Robinson (1933) 对垄断竞争 / 不完全竞争模型的奠基性论述。</li>
+            </ul>
+            <p>图 12-1 使用教学示意函数：需求 P = 20 − 2Q − s，ATC = ⅓(Q−7)² + 9，MC 为其对应边际成本；文中奶茶行业门店数量、均价等为公开报道口径的概述性描述，非逐项核对数据。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="11.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="13.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('s-slider');
+        var out = document.getElementById('s-readout');
+        if (!slider || !out) return;
+        // 教学示意：需求 P = 20 - 2Q - s，ATC = (1/3)(Q-7)² + 9，MC = Q² - (28/3)Q + 76/3
+        function xp(Q) { return 90 + 54 * Q; }
+        function yp(P) { return 400 - 14.167 * P; }
+        function mc(Q) { return Q * Q - (28 / 3) * Q + 76 / 3; }
+        function atc(Q) { return (1 / 3) * (Q - 7) * (Q - 7) + 9; }
+        function draw(s) {
+            var a = 20 - s;
+            var dEnd = Math.min(a / 2, 10), mEnd = Math.min(a / 4, 10);
+            document.getElementById('demand-line').setAttribute('points',
+                xp(0) + ',' + yp(a) + ' ' + xp(dEnd) + ',' + yp(a - 2 * dEnd));
+            document.getElementById('mr-line').setAttribute('points',
+                xp(0) + ',' + yp(a) + ' ' + xp(mEnd) + ',' + yp(a - 4 * mEnd));
+            var Qs = 4, best = 1e9;
+            for (var q = 2; q <= 10; q += 0.01) {
+                var d = (a - 4 * q) - mc(q);
+                if (Math.abs(d) < Math.abs(best)) { best = d; Qs = q; }
+            }
+            var Ps = a - 2 * Qs, A = atc(Qs), pi = (Ps - A) * Qs;
+            var g = document.getElementById('q-guide'); g.setAttribute('x1', xp(Qs)); g.setAttribute('x2', xp(Qs));
+            var dot = document.getElementById('q-dot'); dot.setAttribute('cx', xp(Qs)); dot.setAttribute('cy', yp(Ps));
+            var tag = pi > 0.5 ? '短期超额利润，吸引进入' : (pi < -0.5 ? '亏损，将退出' : '长期零利润');
+            out.textContent = 's = ' + s + '：Q* = ' + Qs.toFixed(1) + '，P* = ' + Ps.toFixed(1)
+                + '，ATC = ' + A.toFixed(1) + '，利润 = ' + pi.toFixed(1) + '（' + tag + '）。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-s'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
