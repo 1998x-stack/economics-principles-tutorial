@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第16章 公共物品与公共资源</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-<h2>第16章 公共物品与公共资源</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第16章 公共物品与公共资源</h1>
 
         <h2>16.1 物品的两种属性：排他性与竞争性</h2>
         <p>大家好，我是你们的讲师。上一章我们讨论了外部性——当你的行为影响了别人的福利，而你没有为此付出或得到补偿。本章我们从另一个角度来理解市场失灵：<strong>为什么有些东西市场根本不愿提供？为什么有些资源被过度使用？</strong></p>
@@ -134,7 +155,40 @@
 
         <p>经济学家保罗·萨缪尔森（Paul Samuelson）在1954年提出了<strong>萨缪尔森条件（Samuelson Condition）</strong>：公共物品的最优供给量满足——所有个人的边际收益之和等于提供该物品的边际成本。</p>
 
-        <pre><code>/* 萨缪尔森条件：公共物品的最优供给 */
+        <figure class="diagram" id="fig-samuelson">
+    <svg viewBox="0 0 700 460" role="img" aria-labelledby="fig16-title fig16-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig16-title">公共物品需求的纵向加总与萨缪尔森条件</title>
+        <desc id="fig16-desc">横轴为公共物品数量、纵轴为边际收益（元）。三条向下的线是三个小区的个人边际收益，最上方一条是三者纵向加总得到的社会总边际收益。社会总边际收益与水平边际成本线的交点决定最优供给量 N*。</desc>
+        <line x1="90" y1="60" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="70" font-size="14" fill="#334155">边际收益（元）</text>
+        <text x="600" y="428" font-size="14" fill="#334155">路灯数 N</text>
+        <polyline points="90,254.3 630,327.1" fill="none" stroke="#0ea5e9" stroke-width="2"/>
+        <polyline points="90,302.9 630,339.3" fill="none" stroke="#14b8a6" stroke-width="2"/>
+        <polyline points="90,327.1 630,363.6" fill="none" stroke="#a855f7" stroke-width="2"/>
+        <polyline points="90,84.3 630,230" fill="none" stroke="#dc2626" stroke-width="3.5"/>
+        <line id="mc-line" x1="90" y1="157.1" x2="660" y2="157.1" stroke="#0f172a" stroke-width="2.5" stroke-dasharray="7 4"/>
+        <line id="n-guide" x1="360" y1="60" x2="360" y2="400" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="n-dot" cx="360" cy="157.1" r="6" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+        <text x="556" y="78" font-size="15" font-weight="700" fill="#dc2626">社会总边际收益</text>
+        <text x="112" y="248" font-size="13" fill="#0369a1">小区 A</text>
+        <text x="112" y="300" font-size="13" fill="#0f766e">小区 B</text>
+        <text x="112" y="346" font-size="13" fill="#7e22ce">小区 C</text>
+        <text x="606" y="150" font-size="14" font-weight="700" fill="#0f172a">MC</text>
+    </svg>
+    <figcaption>图 16-1：公共物品的需求是个人需求曲线的<strong>纵向加总</strong>（价格相加），而非私人物品那样横向加总（数量相加）。社会总边际收益与 MC 的交点给出最优路灯数 N*。拖动滑杆改变边际成本，观察 N* 如何变化。（教学示意：MBA = 1200 − 10N，MBB = 800 − 5N，MBC = 600 − 5N。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="边际成本控制">
+    <label for="mc-slider">边际成本 MC（元 / 每盏）</label>
+    <input id="mc-slider" type="range" min="1600" max="2600" step="100" value="2000" aria-describedby="mc-readout">
+    <button type="button" data-mc="2600">高成本 MC=2600</button>
+    <button type="button" data-mc="2000">基准 MC=2000</button>
+    <button type="button" data-mc="1600">低成本 MC=1600</button>
+    <output id="mc-readout" aria-live="polite">MC = 2000 元：最优数量 N* = 30 盏，此时社会总边际收益 900 + 650 + 450 = 2000 = MC。</output>
+</div>
+
+<pre><code>/* 萨缪尔森条件：公共物品的最优供给 */
 
 /* 假设一条高速公路的照明系统升级项目 */
 /* 每隔多远设置一盏路灯(N)，决定了总成本 */
@@ -171,13 +225,55 @@ N=30时: MBA = 1200 - 300 = 900
 
         <p>在下一篇，我们将探讨另一类重要的市场失灵——<strong>信息不对称</strong>。当交易双方掌握的信息不平等时，市场会产生怎样的扭曲？</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Garrett Hardin (1968), <em>The Tragedy of the Commons</em>, <em>Science</em>——公地悲剧的经典论述。</li>
+                <li>Elinor Ostrom (1990), <em>Governing the Commons</em>——公共资源自主治理与八项设计原则（2009 年诺贝尔经济学奖）。</li>
+                <li>Paul Samuelson (1954), <em>The Pure Theory of Public Expenditure</em>——公共物品最优供给的纵向加总条件。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“公共物品与公共资源”一章。</li>
+            </ul>
+            <p>图 16-1 使用教学示意函数 MBA = 1200 − 10N、MBB = 800 − 5N、MBC = 600 − 5N；内蒙古草畜数据、沙尘暴次数与植被覆盖度引自公开报道的概述性口径，未逐项核对原始统计年鉴。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="15.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="17.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('mc-slider');
+        var out = document.getElementById('mc-readout');
+        if (!slider || !out) return;
+        // 教学示意边际收益：MBA = 1200 - 10N，MBB = 800 - 5N，MBC = 600 - 5N；社会总边际收益 = 2600 - 20N
+        function xp(N) { return 90 + 9 * N; }
+        function yp(V) { return 400 - 0.12143 * V; }
+        function mbA(N) { return 1200 - 10 * N; }
+        function mbB(N) { return 800 - 5 * N; }
+        function mbC(N) { return 600 - 5 * N; }
+        function draw(MC) {
+            var N = (2600 - MC) / 20;
+            if (N < 0) N = 0; if (N > 60) N = 60;
+            var y = yp(MC);
+            var ml = document.getElementById('mc-line'); ml.setAttribute('y1', y); ml.setAttribute('y2', y);
+            var g = document.getElementById('n-guide'); g.setAttribute('x1', xp(N)); g.setAttribute('x2', xp(N));
+            var d = document.getElementById('n-dot');
+            d.setAttribute('cx', xp(N)); d.setAttribute('cy', yp(2600 - 20 * N));
+            var a = mbA(N), b = mbB(N), c = mbC(N);
+            out.textContent = 'MC = ' + MC + ' 元：最优数量 N* = ' + N.toFixed(0) + ' 盏，此时社会总边际收益 '
+                + a.toFixed(0) + ' + ' + b.toFixed(0) + ' + ' + c.toFixed(0) + ' = '
+                + (a + b + c).toFixed(0) + ' = MC。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-mc'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
