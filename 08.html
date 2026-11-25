@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第8章 消费者选择理论</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #065f46; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #064e3b; border-left: 6px solid #059669; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #f0fdf4; border: 1px solid #a7f3d0; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #065f46; line-height: 1.6; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #065f46; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #6ee7b7; background: #d1fae5; color: #065f46; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +61,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-<h2>第8章 消费者选择理论</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第8章 消费者选择理论</h1>
 
         <h2>8.1 预算约束线：你能买什么</h2>
 
@@ -72,7 +92,33 @@
 
         <p>把预算约束线和无差异曲线放在一起，消费者的最优选择就在它们<strong>相切</strong>的那一点。在这一点上：<strong>MRS = P₁/P₂</strong>，即主观的边际替代率等于客观的价格比率。换句话说，消费者对两种商品的"内心评价"恰好等于市场的"价格评价"。</p>
 
-        <p>用数学语言来说，消费者在约束条件下最大化效用函数U(X,Y)，拉格朗日乘子法是最标准的解法：</p>
+        <figure class="diagram" id="fig-budget">
+    <svg viewBox="0 0 700 460" role="img" aria-labelledby="fig08-title fig08-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig08-title">预算约束线与无差异曲线的切点</title>
+        <desc id="fig08-desc">横轴为聚餐顿数、纵轴为买书本数。直线为预算约束线，曲线为无差异曲线，两者相切的一点就是最优消费组合，在该点上边际替代率等于价格之比。</desc>
+        <line x1="90" y1="60" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="70" font-size="14" fill="#334155">买书（本）</text>
+        <text x="596" y="428" font-size="14" fill="#334155">聚餐（顿）</text>
+        <polyline id="budget-line" points="90,91 550,400" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <polyline id="ic-curve" points="" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="8 5"/>
+        <circle id="opt-dot" cx="217" cy="215" r="6" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+        <text x="560" y="120" font-size="15" font-weight="700" fill="#0369a1">预算约束线</text>
+        <text x="96" y="150" font-size="15" font-weight="700" fill="#6d28d9">无差异曲线</text>
+    </svg>
+    <figcaption>图 8-1：最优消费在预算约束线与无差异曲线的切点，此时 MRS = P₁/P₂。用鼠标或键盘拖动下方滑杆改变聚餐价格，可见预算约束线绕纵轴截距旋转，最优点沿“收入的一半买书”方向移动。（本章用 U = X^0.4·Y^0.6、收入 5000 元、书价 50 元作为教学示意。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="聚餐价格控制">
+    <label for="px-slider">聚餐价格 P₁（元 / 顿）</label>
+    <input id="px-slider" type="range" min="80" max="160" step="5" value="100" aria-describedby="px-readout">
+    <button type="button" data-px="160">贵 P₁=160</button>
+    <button type="button" data-px="120">中间 P₁=120</button>
+    <button type="button" data-px="80">便宜 P₁=80</button>
+    <output id="px-readout" aria-live="polite">P₁ = 100 元：最优消费 20.0 顿聚餐 + 60 本书，支出 5000 元。</output>
+</div>
+
+<p>用数学语言来说，消费者在约束条件下最大化效用函数U(X,Y)，拉格朗日乘子法是最标准的解法：</p>
 
         <pre><code># 消费者效用最大化（拉格朗日乘子法）
 # 最大化 U(X,Y) = X^α * Y^(1-α)
@@ -139,13 +185,60 @@ print(f"最优Y消费量: Y* = (1-{α})*I/Py")</code></pre>
 
         <p>我们下一章见。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“消费者选择”一章（预算约束、无差异曲线、收入效应与替代效应、吉芬品）。</li>
+                <li>Daniel Kahneman &amp; Amos Tversky (1979), <em>Prospect Theory</em>；Richard Thaler 关于“心理账户”的论述——行为经济学对理性人假设的修正。</li>
+                <li>爱尔兰马铃薯与吉芬品：沿教科书通行叙述，具体历史数字未逐项核对原始档案。</li>
+            </ul>
+            <p>图 8-1、效用函数 U = X^0.4·Y^0.6、收入 5000 元、聚餐与书价为<strong>教学示意</strong>参数，用于演示切点条件，不代表真实消费数据。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="07.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="09.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('px-slider');
+        var out = document.getElementById('px-readout');
+        var budget = document.getElementById('budget-line');
+        var ic = document.getElementById('ic-curve');
+        var opt = document.getElementById('opt-dot');
+        if (!slider || !out) return;
+        // 教学示意：U = X^0.4 · Y^0.6，收入 I=5000，Py=50
+        var I = 5000, Py = 50, alpha = 0.4;
+        function xp(X) { return 90 + 6.333 * X; }
+        function yp(Y) { return 400 - 340 * (Y / 110); }
+        function draw(Px) {
+            var Xint = I / Px, Yint = I / Py;
+            var Xend = Math.min(Xint, 90), Yend = Yint - (Px / Py) * Xend;
+            budget.setAttribute('x1', xp(0)); budget.setAttribute('y1', yp(Yint));
+            budget.setAttribute('x2', xp(Xend)); budget.setAttribute('y2', yp(Yend));
+            var Xs = alpha * I / Px, Ys = (1 - alpha) * I / Py;
+            opt.setAttribute('cx', xp(Xs)); opt.setAttribute('cy', yp(Ys));
+            var U = Math.pow(Xs, alpha) * Math.pow(Ys, 1 - alpha);
+            var pts = [];
+            for (var x = 0.6; x <= 90; x += 0.6) {
+                var y = Math.pow(U / Math.pow(x, alpha), 1 / (1 - alpha));
+                if (y > 110) continue;
+                pts.push(xp(x).toFixed(1) + ',' + yp(y).toFixed(1));
+            }
+            ic.setAttribute('points', pts.join(' '));
+            out.textContent = 'P₁ = ' + Px + ' 元：最优消费 ' + Xs.toFixed(1) + ' 顿聚餐 + '
+                + Ys.toFixed(0) + ' 本书，支出 ' + (Px * Xs + Py * Ys).toFixed(0) + ' 元 = 收入 5000 元。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-px'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
