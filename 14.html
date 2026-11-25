@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第14章 生产要素市场</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #0f766e; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #134e4a; border-left: 6px solid #14b8a6; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #115e59; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #115e59; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #5eead4; background: #ccfbf1; color: #115e59; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-<h2>第14章 生产要素市场</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第14章 生产要素市场</h1>
 
         <h2>14.1 从产品市场到要素市场</h2>
 
@@ -63,7 +84,34 @@
 
         <p>这意味着<strong>劳动需求曲线就是VMPL曲线</strong>——它是向右下倾斜的，因为随着雇佣增加，MPL递减。同时，产品价格P的变化也会引起VMPL曲线的移动——这就是为什么当房价上涨时，建筑工人的工资也会跟着涨。</p>
 
-        <pre><code># VMPL计算: 面包厂的雇佣决策
+        <figure class="diagram" id="fig-vmpl">
+    <svg viewBox="0 0 700 460" role="img" aria-labelledby="fig14-title fig14-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig14-title">劳动的边际产量价值曲线与最优雇佣量</title>
+        <desc id="fig14-desc">横轴为工人数、纵轴为边际产量价值（元）。曲线向下倾斜，因为边际产量递减。水平线为市场工资 W。企业雇佣到 VMPL 不低于工资的最后一个人为止。</desc>
+        <line x1="90" y1="60" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="70" font-size="14" fill="#334155">VMPL（元）</text>
+        <text x="608" y="428" font-size="14" fill="#334155">工人数 L</text>
+        <polyline points="144,73.6 198,114.4 252,155.2 306,196 360,236.8 414,277.6 468,318.4 522,359.2 576,379.6" fill="none" stroke="#0d9488" stroke-width="3"/>
+        <line id="wage-line" x1="90" y1="236.8" x2="660" y2="236.8" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="7 4"/>
+        <line id="l-guide" x1="360" y1="60" x2="360" y2="400" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="l-dot" cx="360" cy="236.8" r="6" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+        <text x="596" y="228" font-size="15" font-weight="700" fill="#dc2626">工资 W</text>
+        <text x="96" y="68" font-size="15" font-weight="700" fill="#0d9488">劳动需求曲线 = VMPL</text>
+    </svg>
+    <figcaption>图 14-1：劳动需求曲线就是 VMPL 曲线。工资线与曲线的交点决定最优雇佣量：只要 VMPL ≥ W 就继续雇。拖动滑杆改变工资，可观察最优雇佣量如何沿需求曲线移动。（数据为本章面包厂算例的教学示意：总产量 80/150/210/260/300/330/350/360/365/362，面包单价 3 元。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="工资控制">
+    <label for="wage-slider">市场工资 W（元 / 天）</label>
+    <input id="wage-slider" type="range" min="60" max="240" step="20" value="120" aria-describedby="wage-readout">
+    <button type="button" data-w="240">高工资 W=240</button>
+    <button type="button" data-w="120">基准 W=120</button>
+    <button type="button" data-w="60">低工资 W=60</button>
+    <output id="wage-readout" aria-live="polite">W = 120 元：VMPL ≥ W 的最后一人是第 5 人（VMPL=120），最优雇佣量 ≈ 5 人。</output>
+</div>
+
+<pre><code># VMPL计算: 面包厂的雇佣决策
 # 假设每个面包售价3元
 
 labor = list(range(1, 11))  # 工人数量
@@ -182,13 +230,56 @@ print("      第7人VMPL=60 < 工资120，不应雇佣")
 
         <p>我们下一章从<strong>外部性</strong>开始——当你的行为影响了他人却不需要为此付出代价时，市场就不再有效率了。下一章见。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“生产要素市场”一章（派生需求、VMPL、向后弯曲的劳动供给曲线、资本与土地）。</li>
+                <li>基尼系数与不平等程度：按公开统计口径的概述性描述，具体数值口径（税前/税后、全国/全球）可能不同，本章不逐项核对。</li>
+            </ul>
+            <p>图 14-1 与代码使用教学示意数据：总产量序列 80/150/210/260/300/330/350/360/365/362，面包单价 3 元、日工资 120 元，仅用于演示 VMPL = MPL × P 与最优雇佣条件。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="13.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="15.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('wage-slider');
+        var out = document.getElementById('wage-readout');
+        if (!slider || !out) return;
+        // 下标即工人数 L；VMPL = MPL × 3（元），为本章面包厂教学示意算例
+        var vmpl = [0, 240, 210, 180, 150, 120, 90, 60, 30, 15, -9];
+        function xp(L) { return 90 + 54 * L; }
+        function yp(V) { return 400 - 1.36 * V; }
+        function draw(W) {
+            var opt = 0;
+            for (var L = 1; L <= 10; L++) { if (vmpl[L] >= W) opt = L; }
+            var y = yp(W);
+            var wl = document.getElementById('wage-line');
+            wl.setAttribute('y1', y); wl.setAttribute('y2', y);
+            var g = document.getElementById('l-guide'), dot = document.getElementById('l-dot');
+            if (opt > 0) {
+                g.setAttribute('x1', xp(opt)); g.setAttribute('x2', xp(opt));
+                dot.setAttribute('r', 6); dot.setAttribute('cx', xp(opt)); dot.setAttribute('cy', yp(vmpl[opt]));
+                out.textContent = 'W = ' + W + ' 元：VMPL ≥ W 的最后一人是第 ' + opt + ' 人（VMPL='
+                    + vmpl[opt] + '），最优雇佣量 ≈ ' + opt + ' 人。';
+            } else {
+                g.setAttribute('x1', xp(0)); g.setAttribute('x2', xp(0));
+                dot.setAttribute('r', 0);
+                out.textContent = 'W = ' + W + ' 元：高于第 1 人的 VMPL（240），最优雇佣量为 0 人。';
+            }
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-w'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
