@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第11章 垄断</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #7c2d12; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #ea580c; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #9a3412; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #9a3412; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #fdba74; background: #ffedd5; color: #9a3412; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-<h2>第11章 垄断</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第11章 垄断</h1>
 
         <h2>11.1 垄断的来源：为什么只有一个卖家？</h2>
 
@@ -110,7 +131,40 @@ monopoly_equilibrium()
 # 垄断价格比完全竞争高: 15.0
 # 消费者剩余损失: 168.75</code></pre>
 
-        <h2>11.3 垄断的无谓损失</h2>
+        <figure class="diagram" id="fig-mono">
+    <svg viewBox="0 0 700 460" role="img" aria-labelledby="fig11-title fig11-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig11-title">垄断定价、垄断利润与无谓损失</title>
+        <desc id="fig11-desc">横轴为产量、纵轴为价格。需求曲线向下，边际收益 MR 位于需求下方。MR 与 MC 的交点决定产量 Q*，需求曲线在 Q* 处的高度决定价格 P*。橙色矩形为垄断利润，紫色三角形为无谓损失。</desc>
+        <line x1="90" y1="60" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="70" font-size="14" fill="#334155">价格 P</text>
+        <text x="616" y="428" font-size="14" fill="#334155">产量 Q</text>
+        <rect id="profit-rect" x="90" y="162" width="162" height="102" fill="#fb923c" fill-opacity="0.3"/>
+        <polygon id="dwl-poly" points="252,264 252,162 333,213" fill="#a855f7" fill-opacity="0.35"/>
+        <polyline id="demand-line" points="90,60 630,400" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <polyline id="mr-line" points="90,60 360,400" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="8 5"/>
+        <polyline id="mc-line" points="90,366 576,60" fill="none" stroke="#16a34a" stroke-width="3"/>
+        <line id="q-guide" x1="252" y1="60" x2="252" y2="400" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="q-dot" cx="252" cy="162" r="6" fill="#dc2626" stroke="#fff" stroke-width="2"/>
+        <text x="560" y="92" font-size="15" font-weight="700" fill="#0369a1">需求 D</text>
+        <text x="392" y="382" font-size="15" font-weight="700" fill="#dc2626">边际收益 MR</text>
+        <text x="520" y="130" font-size="15" font-weight="700" fill="#16a34a">边际成本 MC</text>
+        <text x="96" y="158" font-size="13" fill="#9a3412">垄断利润</text>
+        <text x="300" y="242" font-size="13" fill="#6b21a8">无谓损失</text>
+    </svg>
+    <figcaption>图 11-1：垄断者先由 MR = MC 定产量 Q*，再沿需求曲线定价格 P*（P* &gt; MC）。橙色矩形是垄断利润，紫色三角形是无谓损失——本可成交但被限产放弃的价值。拖动滑杆改变需求截距 a（需求越旺），可见 Q* 与 P* 同步变化。（图与代码使用教学示意函数 P = a − 2Q、TC = 20 + 10Q + Q²。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="需求截距控制">
+    <label for="a-slider">需求截距 a（P = a − 2Q）</label>
+    <input id="a-slider" type="range" min="80" max="120" step="5" value="100" aria-describedby="a-readout">
+    <button type="button" data-a="80">需求弱 a=80</button>
+    <button type="button" data-a="100">基准 a=100</button>
+    <button type="button" data-a="120">需求旺 a=120</button>
+    <output id="a-readout" aria-live="polite">a = 100：Q* = 15.0，P* = 70.0，垄断利润 = 655，无谓损失 = 112.5。</output>
+</div>
+
+<h2>11.3 垄断的无谓损失</h2>
 
         <p>垄断之所以被认为"不好"，不是因为它赚了钱——而是因为它造成了<strong>效率损失</strong>。与完全竞争相比，垄断造成了两方面的问题：</p>
 
@@ -153,13 +207,56 @@ monopoly_equilibrium()
 
         <p>垄断是市场结构的另一个极端——从完全竞争的"很多人、价格接受者"到垄断的"一个人、价格制定者"。但现实世界中的大多数市场，恰恰处于这两个极端之间。下一章我们要讨论的<strong>垄断竞争（Monopolistic Competition）</strong>，就是介于两者之间的市场结构——有很多卖家的同时，每家都有自己的"小垄断"力量。我们下一章见。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“垄断”一章（进入壁垒、MR &lt; P、垄断的无谓损失、价格歧视）。</li>
+                <li>美国《谢尔曼反托拉斯法》（Sherman Antitrust Act, 1890）；1911 年美国最高法院拆分标准石油公司——反垄断史上的经典案例。</li>
+            </ul>
+            <p>图 11-1 与代码使用的教学示意函数 P = a − 2Q、TC = 20 + 10Q + Q²，以及具体利润、无谓损失数值均为演示定价逻辑的<strong>教学示意</strong>数据，不代表特定垄断企业的真实财务。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="10.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="12.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('a-slider');
+        var out = document.getElementById('a-readout');
+        if (!slider || !out) return;
+        // 教学示意：P = a - 2Q，TC = 20 + 10Q + Q²
+        function xp(Q) { return 90 + 10.8 * Q; }
+        function yp(P) { return 400 - 3.4 * P; }
+        function line(id, pts) { document.getElementById(id).setAttribute('points', pts); }
+        function draw(a) {
+            var Qs = (a - 10) / 6, Ps = a - 2 * Qs, MCs = 10 + 2 * Qs;
+            var Qe = (a - 10) / 4, Pe = a - 2 * Qe;
+            var dEnd = Math.min(a / 2, 50), mEnd = Math.min(a / 4, 50);
+            line('demand-line', xp(0) + ',' + yp(a) + ' ' + xp(dEnd) + ',' + yp(a - 2 * dEnd));
+            line('mr-line', xp(0) + ',' + yp(a) + ' ' + xp(mEnd) + ',' + yp(a - 4 * mEnd));
+            var pr = document.getElementById('profit-rect');
+            pr.setAttribute('x', xp(0)); pr.setAttribute('y', yp(Ps));
+            pr.setAttribute('width', xp(Qs) - xp(0)); pr.setAttribute('height', Math.abs(yp(Ps) - yp(MCs)));
+            document.getElementById('dwl-poly').setAttribute('points',
+                xp(Qs) + ',' + yp(MCs) + ' ' + xp(Qs) + ',' + yp(Ps) + ' ' + xp(Qe) + ',' + yp(Pe));
+            var g = document.getElementById('q-guide'); g.setAttribute('x1', xp(Qs)); g.setAttribute('x2', xp(Qs));
+            var d = document.getElementById('q-dot'); d.setAttribute('cx', xp(Qs)); d.setAttribute('cy', yp(Ps));
+            var pi = Ps * Qs - (20 + 10 * Qs + Qs * Qs);
+            var dwl = 0.5 * (Ps - MCs) * (Qe - Qs);
+            out.textContent = 'a = ' + a + '：Q* = ' + Qs.toFixed(1) + '，P* = ' + Ps.toFixed(1)
+                + '，垄断利润 = ' + pi.toFixed(0) + '，无谓损失 = ' + dwl.toFixed(1) + '。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-a'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
