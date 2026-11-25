@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第3章 相互依存与贸易 · 经济学原理</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #b45309; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #d97706; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #92400e; line-height: 1.6; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #92400e; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #fcd34d; background: #fef3c7; color: #92400e; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,10 +61,10 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
+    </nav>
+    <main id="main" class="main-content">
 
-<h2>第3章 相互依存与贸易</h2>
+<h1>第3章 相互依存与贸易</h1>
 
 <p>大家好，我是你们的讲师。上一章我们学会了用模型思考经济问题。这一章我们来聊聊一个既古老又现代的话题——<strong>贸易</strong>。</p>
 
@@ -91,6 +111,34 @@
 </div>
 
 <p>下面的代码计算了分配方案和贸易后的消费量：</p>
+
+<figure class="diagram" id="fig-ppf">
+    <svg viewBox="0 0 700 460" role="img" aria-labelledby="fig03-title fig03-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig03-title">鲁滨逊与星期五的生产可能性边界</title>
+        <desc id="fig03-desc">横轴为鱼、纵轴为椰子。两条边界均从原点出发：鲁滨逊的线较平（捕 1 条鱼放弃 2 个椰子），星期五的线较陡（捕 1 条鱼放弃 4 个椰子）。线越平，说明捕鱼的机会成本越低。</desc>
+        <line x1="90" y1="60" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="70" font-size="14" fill="#334155">椰子（个）</text>
+        <text x="612" y="428" font-size="14" fill="#334155">鱼（条）</text>
+        <polyline points="90,80 579,400" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <polyline points="90,240 212,400" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="9 5"/>
+        <circle cx="579" cy="400" r="5" fill="#0ea5e9"/><circle cx="212" cy="400" r="5" fill="#7c3aed"/>
+        <text x="430" y="205" font-size="15" font-weight="700" fill="#0369a1">鲁滨逊 PPF（斜率 −2）</text>
+        <text x="116" y="300" font-size="15" font-weight="700" fill="#6d28d9">星期五 PPF（斜率 −4）</text>
+        <text x="500" y="392" font-size="12" fill="#0369a1">32 条鱼</text>
+        <text x="150" y="392" font-size="12" fill="#6d28d9">8 条鱼</text>
+    </svg>
+    <figcaption>图 3-1：边界的斜率就是机会成本。鲁滨逊的边界更平，每多捕 1 条鱼只需放弃 2 个椰子；星期五要放弃 4 个。因此鲁滨逊在捕鱼上有比较优势，星期五在摘椰子上有比较优势。（产量来自本章“8 小时工作”的假设，为教学示意。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="贸易条件控制">
+    <label for="tot-slider">贸易条件 r（个椰子 / 条鱼）</label>
+    <input id="tot-slider" type="range" min="2" max="4" step="0.1" value="3" aria-describedby="tot-readout">
+    <button type="button" data-r="2.4">偏向星期五 r=2.4</button>
+    <button type="button" data-r="3">中间价 r=3</button>
+    <button type="button" data-r="3.6">偏向鲁滨逊 r=3.6</button>
+    <output id="tot-readout" aria-live="polite">r = 3.0：鲁滨逊 24 条鱼 / 24 个椰子，星期五 8 条鱼 / 8 个椰子。</output>
+</div>
 
 <pre><code># 鲁滨逊与星期五的贸易收益计算
 
@@ -161,13 +209,44 @@ print(f"贸易收益: 鱼+{total_trade[0]-total_self[0]}, "
 
 <p>比较优势理论是经济学的基石之一，也是国际贸易理论的起点。从下一章开始，我们将进入一个更"热闹"的场景——市场。第4章，我们将探讨供给与需求如何决定价格，敬请期待！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>David Ricardo.《政治经济学及赋税原理》（On the Principles of Political Economy and Taxation, 1817）——比较优势理论的源头。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“相互依存与贸易”一章（绝对优势、比较优势、贸易价格区间）。</li>
+            </ul>
+            <p>鲁滨逊与星期五的每小时产量、8 小时工作假设与图 3-1 的边界均为用于演示比较优势的<strong>教学示意</strong>数据，不对应真实个人或国家。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="02.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="04.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('tot-slider');
+        var out = document.getElementById('tot-readout');
+        if (!slider || !out) return;
+        // 双方专业化后：鲁滨逊 32 鱼、星期五 32 椰子；交换 8 条鱼，价格 r 椰子/鱼
+        function draw(r) {
+            var robFish = 24, robCoco = 8 * r, friFish = 8, friCoco = 32 - 8 * r;
+            var better = (r > 2 && r < 4)
+                ? ' 贸易条件落在两人机会成本（2 与 4）之间，双方消费都超出各自 PPF，优于自给自足。'
+                : ' 恰在端点时一方无增量收益。';
+            out.textContent = 'r = ' + r.toFixed(1) + '：鲁滨逊 ' + robFish + ' 条鱼 / '
+                + robCoco.toFixed(1) + ' 个椰子，星期五 ' + friFish + ' 条鱼 / '
+                + friCoco.toFixed(1) + ' 个椰子。' + better;
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-r'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
