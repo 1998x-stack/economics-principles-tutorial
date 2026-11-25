@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第6章 政府政策与市场 · 经济学原理</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #b45309; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #d97706; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #92400e; line-height: 1.6; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #92400e; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #fcd34d; background: #fef3c7; color: #92400e; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,10 +61,10 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
+    </nav>
+    <main id="main" class="main-content">
 
-<h2>第6章 政府政策与市场</h2>
+<h1>第6章 政府政策与市场</h1>
 
 <p>大家好，我是你们的讲师。前面几章我们讨论了市场如何通过"看不见的手"自发运作。然而现实中，政府经常对市场进行干预——限制价格、征收税收。政府为什么要干预？干预的后果是什么？这一章我们一一拆解。</p>
 
@@ -81,6 +101,37 @@
 
 <div class="warning">
     <strong>踩坑提醒：</strong>这是初学者最容易犯的直觉错误——"租金上限可以让穷人有房住"。短期看可能有效果，但长期看，当供给端（房东）减少供给、新公寓不再建造时，真正受损的恰恰是那些租不到房的低收入群体。经济学告诉你：<strong>善意需要配套正确的机制设计</strong>。
+</div>
+
+<figure class="diagram" id="fig-price">
+    <svg viewBox="0 0 700 460" role="img" aria-labelledby="fig06-title fig06-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig06-title">价格上限造成短缺、价格下限造成过剩</title>
+        <desc id="fig06-desc">横轴为数量、纵轴为价格。需求曲线向下、供给曲线向上，交点为均衡。政策价格低于均衡时是价格上限，此时需求量大于供给量，出现短缺；政策价格高于均衡时是价格下限，此时供给量大于需求量，出现过剩。</desc>
+        <line x1="90" y1="60" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="70" font-size="14" fill="#334155">价格 P</text>
+        <text x="612" y="428" font-size="14" fill="#334155">数量 Q</text>
+        <polyline points="198,60 630,400" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <polyline points="90,357.5 630,145" fill="none" stroke="#7c3aed" stroke-width="3"/>
+        <circle cx="414" cy="230" r="5" fill="#0f172a"/>
+        <text x="358" y="220" font-size="12" fill="#334155">均衡</text>
+        <line id="gov-price" x1="90" y1="281" x2="650" y2="281" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="7 4"/>
+        <circle id="qd-dot" cx="478" cy="281" r="5" fill="#0ea5e9"/>
+        <circle id="qs-dot" cx="284" cy="281" r="5" fill="#7c3aed"/>
+        <line id="gap-line" x1="284" y1="281" x2="478" y2="281" stroke="#dc2626" stroke-width="8" stroke-opacity="0.25"/>
+        <text x="556" y="60" font-size="15" font-weight="700" fill="#0369a1">需求</text>
+        <text x="548" y="164" font-size="15" font-weight="700" fill="#6d28d9">供给</text>
+    </svg>
+    <figcaption>图 6-1：政策价格与均衡的偏离方向决定后果。政策价格低于均衡（价格上限）→ 需求量大于供给量 → 短缺；高于均衡（价格下限）→ 供给量大于需求量 → 过剩。图中线性供需为教学示意函数 Qd = 100 − 2P、Qs = −20 + 4P，均衡为 P = 20、Q = 60。</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="政策价格控制">
+    <label for="gov-slider">政策价格 P_g（元）</label>
+    <input id="gov-slider" type="range" min="8" max="32" step="2" value="14" aria-describedby="gov-readout">
+    <button type="button" data-p="14">价格上限 P=14</button>
+    <button type="button" data-p="20">无干预 P=20</button>
+    <button type="button" data-p="28">价格下限 P=28</button>
+    <output id="gov-readout" aria-live="polite">P_g = 14 元（价格上限）：Qd = 72，Qs = 36，短缺 36 单位。</output>
 </div>
 
 <h2>6.3 价格下限（Price Floor）</h2>
@@ -158,13 +209,56 @@ tax_incidence(6)
 
 <p>下一章，我们将从"效率"的角度系统评估市场——什么情况下市场是有效的？什么情况下出现了无谓损失？敬请期待第7章！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>N. Gregory Mankiw.《经济学原理》——“供给、需求与政府政策”一章（价格上限、价格下限、税收归宿）。</li>
+                <li>1973 年 OPEC 石油禁运与美国汽油价格管制：本章按教科书通行的历史表达陈述；具体油价与排队长度未逐项核对原始档案。</li>
+            </ul>
+            <p>图 6-1 与代码中的 Qd = 100 − 2P、Qs = −20 + 4P 及 6 元从量税均为用于演示归属规律的<strong>教学示意</strong>数值，不代表特定市场的真实参数。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="05.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="07.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('gov-slider');
+        var out = document.getElementById('gov-readout');
+        if (!slider || !out) return;
+        // 教学示意供需：Qd = 100 - 2P，Qs = -20 + 4P（均衡 P=20, Q=60）
+        function xq(Q) { return 90 + 5.4 * Q; }
+        function yp(P) { return 400 - 8.5 * P; }
+        function qd(P) { return 100 - 2 * P; }
+        function qs(P) { return -20 + 4 * P; }
+        function draw(P) {
+            var y = yp(P);
+            var price = document.getElementById('gov-price');
+            price.setAttribute('y1', y); price.setAttribute('y2', y);
+            var Qd = qd(P), Qs = qs(P);
+            var dq = document.getElementById('qd-dot'), sq = document.getElementById('qs-dot');
+            var gl = document.getElementById('gap-line');
+            dq.setAttribute('cx', xq(Qd)); dq.setAttribute('cy', y);
+            sq.setAttribute('cx', xq(Qs)); sq.setAttribute('cy', y);
+            gl.setAttribute('x1', xq(Math.min(Qd, Qs))); gl.setAttribute('x2', xq(Math.max(Qd, Qs)));
+            gl.setAttribute('y1', y); gl.setAttribute('y2', y);
+            var msg;
+            if (P < 20) msg = 'P_g = ' + P + ' 元（价格上限）：Qd = ' + Qd + '，Qs = ' + Qs + '，短缺 ' + (Qd - Qs) + ' 单位。';
+            else if (P > 20) msg = 'P_g = ' + P + ' 元（价格下限）：Qd = ' + Qd + '，Qs = ' + Qs + '，过剩 ' + (Qs - Qd) + ' 单位。';
+            else msg = 'P_g = 20 元：恰好等于均衡价格，既无短缺也无过剩。';
+            out.textContent = msg;
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-p'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
