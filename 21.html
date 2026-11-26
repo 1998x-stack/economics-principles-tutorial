@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第21章 长期经济增长</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,9 +63,8 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-
-<h2>第21章 长期经济增长</h2>
+    <main id="main" class="main-content">
+<h1>第21章 长期经济增长</h1>
 
         <h2>21.1 为什么有些国家富得流油，有些穷得吃土？</h2>
         <p>大家好，我是你们的讲师。你有没有想过这个问题：我一个普普通通的中国人，生来就比一个索马里人拥有更多的机会、更好的教育、更长的寿命——这和我个人努不努力没有半点关系，纯粹是因为我降生在了中国。国家之间的经济差距，大到令人震惊。</p>
@@ -106,6 +126,35 @@
         <div class="warning">
             <strong>⚠️ 索洛模型的"悲伤结论"：</strong>单纯靠攒钱投资、省吃俭用，一个国家可以变富，但永远无法成为真正的发达国家。因为资本的边际收益会递减，最终大家都会停止增长。只有技术进步——新的生产方式、新的产品、新的管理方法——才能让经济持续增长。这解释了为什么苏联后期大量投资但效率低下，而美国靠硅谷的创新持续领先。
         </div>
+
+        <figure class="diagram" id="fig-solow">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig21-title fig21-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig21-title">索洛模型的稳态：投资与持平投资</title>
+        <desc id="fig21-desc">横轴为人均资本 k，纵轴为人均投资。蓝色凹曲线是投资 s·f(k)，随 k 增大而变平（资本边际收益递减）；红色直线是持平投资 (δ+n)k。两线交点决定稳态资本 k*，此处投资恰好弥补折旧，人均产出不再增长。</desc>
+        <line x1="90" y1="380" x2="620" y2="380" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="380" x2="90" y2="60" stroke="#334155" stroke-width="2"/>
+        <text x="30" y="54" font-size="13" fill="#334155">人均投资 / 产出</text>
+        <text x="560" y="404" font-size="13" fill="#334155">人均资本 k</text>
+        <line x1="90" y1="380" x2="590" y2="245" stroke="#dc2626" stroke-width="2.5"/>
+        <text x="470" y="238" font-size="13" font-weight="700" fill="#b91c1c">持平投资 (δ+n)k</text>
+        <polyline id="inv-curve" points="90,380 140,353 190,341.8 240,333.2 290,326 340,319.6 390,313.9 440,308.6 490,303.6 540,299 590,294.6" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <text x="150" y="320" font-size="13" font-weight="700" fill="#0369a1">投资 s·f(k)</text>
+        <line id="ss-hguide" x1="90" y1="200" x2="290" y2="200" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <line id="ss-vguide" x1="290" y1="200" x2="290" y2="380" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="ss-dot" cx="290" cy="200" r="6" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+        <text id="ss-label" x="300" y="192" font-size="13" font-weight="700" fill="#0f172a">稳态 k*</text>
+    </svg>
+    <figcaption>图 21-1：横轴为人均资本 k，纵轴为人均投资/产出。蓝色曲线是投资 s·f(k)，因资本边际收益递减而向下弯曲；红色直线是持平投资 (δ+n)k。两线交点即<strong>稳态 k*</strong>，此时投资恰好弥补折旧，人均产出不再增长。提高储蓄率 s 会把投资曲线上移、推高 k*（但边际效果递减）——这正是索洛模型“资本积累有极限”的核心。（教学示意：f(k)=√k，δ+n=0.15，s<sub>0</sub>=0.30。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="储蓄率控制">
+    <label for="s-slider">储蓄率 s</label>
+    <input id="s-slider" type="range" min="0.1" max="0.5" step="0.05" value="0.3" aria-describedby="s-readout">
+    <button type="button" data-s="0.15">低储蓄 s=0.15</button>
+    <button type="button" data-s="0.3">基准 s=0.30</button>
+    <button type="button" data-s="0.45">高储蓄 s=0.45</button>
+    <output id="s-readout" aria-live="polite">s = 0.30：稳态人均资本 k* = 4.00，稳态人均产出 y* = 2.00。</output>
+</div>
 
         <h2>21.5 追赶效应与中等收入陷阱</h2>
         <p>索洛模型有一个重要的预测：<strong>穷国会比富国增长更快（追赶效应，Catch-up Effect）</strong>。原因很简单——穷国可以"复制"富国的技术和管理方法，不需要自己从头发明。这使得后来者可以比先行者增长更快。</p>
@@ -200,13 +249,62 @@ for year in range(0, 31, 5):
         </ul>
         <p>理解了长期增长的规律，下一章我们来看看支撑增长的"燃料"从哪里来——<strong>储蓄、投资与金融体系</strong>。现代经济能把万亿资金从储蓄者手中"搬"到企业家手中，靠的是一个精巧但脆弱的机器——金融体系。第22章见！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Robert M. Solow (1956), <em>A Contribution to the Theory of Economic Growth</em>, <em>QJE</em>，<a href="https://doi.org/10.2307/1884513">doi:10.2307/1884513</a>——索洛增长模型。</li>
+                <li>Robert M. Solow (1957), <em>Technical Change and the Aggregate Production Function</em>, <em>Review of Economics and Statistics</em>，<a href="https://doi.org/10.2307/1926047">doi:10.2307/1926047</a>——技术进步对增长的贡献（增长核算）。</li>
+                <li>World Bank (2007), <em>An East Asian Renaissance</em>——“中等收入陷阱”概念的推广与讨论。</li>
+                <li>Maddison Project / Penn World Table——长期人均 GDP 历史序列（用于国际比较）。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“生产与增长”相关章节。</li>
+            </ul>
+            <p>图 21-1 采用教学示意：人均生产函数 f(k)=√k、折旧率 δ+n=0.15；各国增长率、日本泡沫与中国 GDP 数据引自公开统计与报道的概述性口径，未逐项核对原始数据库。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="20.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="22.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('s-slider');
+        var out = document.getElementById('s-readout');
+        var curve = document.getElementById('inv-curve');
+        var dot = document.getElementById('ss-dot');
+        if (!slider || !out || !curve || !dot) return;
+        // 教学示意：f(k)=√k，折旧率 d=0.15；稳态 k*=(s/d)^2，y*=s/d
+        var d = 0.15;
+        function X(k) { return 90 + 50 * k; }
+        function Y(v) { return 380 - 90 * v; }
+        function draw(s) {
+            var pts = [], i, k, inv;
+            for (i = 0; i <= 20; i++) {
+                k = 10 * i / 20;
+                inv = s * Math.sqrt(k);
+                pts.push(X(k).toFixed(1) + ',' + Y(inv).toFixed(1));
+            }
+            curve.setAttribute('points', pts.join(' '));
+            var kstar = Math.pow(s / d, 2), ystar = s / d, cx = X(kstar), cy = Y(ystar);
+            dot.setAttribute('cx', cx); dot.setAttribute('cy', cy);
+            var h = document.getElementById('ss-hguide');
+            h.setAttribute('x2', cx); h.setAttribute('y1', cy); h.setAttribute('y2', cy);
+            var v = document.getElementById('ss-vguide');
+            v.setAttribute('x1', cx); v.setAttribute('x2', cx); v.setAttribute('y1', cy);
+            var lb = document.getElementById('ss-label');
+            lb.setAttribute('x', cx + 10); lb.setAttribute('y', cy - 10);
+            out.textContent = 's = ' + s.toFixed(2) + '：稳态人均资本 k* = ' + kstar.toFixed(2)
+                + '，稳态人均产出 y* = ' + ystar.toFixed(2) + '。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-s'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
