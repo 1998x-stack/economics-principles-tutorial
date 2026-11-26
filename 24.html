@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第24章 货币政策与央行</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,12 +63,12 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-        <h2>第二十四章：货币政策与央行</h2>
+    <main id="main" class="main-content">
+        <h1>第24章 货币政策与央行</h1>
 
         <p>大家好，我是你们的讲师。上一章我们学习了AD-AS模型——一个理解经济波动的框架。在那个模型中，AD曲线的移动是短期波动的核心驱动力。谁有力量让AD曲线移动？除了消费者信心和市场情绪之外，两个最重要的角色是<strong>中央银行</strong>（通过货币政策）和<strong>政府</strong>（通过财政政策）。这一章我们先聚焦央行。</p>
 
-        <h3>24.1 货币的职能</h3>
+        <h2>24.1 货币的职能</h2>
 
         <p>在讨论货币政策之前，我们需要先理解最基本的问题：什么是"货币"？经济学里，货币不是"wealth"（财富）或"income"（收入），它有明确的三种职能：</p>
 
@@ -61,7 +82,7 @@
             <p><strong>流动性排序</strong>：现金 &gt; 活期存款 &gt; 定期存款 &gt; 国债 &gt; 股票 &gt; 房产。央行在讨论"货币供应量"时，会用不同层次的指标：M0（流通中的现金）、M1（M0+活期存款）、M2（M1+定期存款+储蓄存款）。中国的M2口径比美国更宽泛，这是一个重要的技术细节。</p>
         </div>
 
-        <h3>24.2 中央银行与货币供给</h3>
+        <h2>24.2 中央银行与货币供给</h2>
 
         <p>谁负责管理一国的货币？<strong>中央银行</strong>（Central Bank）。美国的央行是美联储（Federal Reserve，简称Fed），中国的是中国人民银行（PBOC），欧洲的是欧洲中央银行（ECB），日本的是日本银行（BOJ）。央行的核心职能包括：</p>
 
@@ -105,7 +126,42 @@
 结论：准备金率越高，货币乘数越小，货币创造能力越弱。
      这就是央行调控货币供给的基本逻辑。</code></pre>
 
-        <h3>24.3 传统货币政策工具</h3>
+        <figure class="diagram" id="fig-multiplier">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig24-title fig24-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig24-title">部分准备金制度下的存款创造</title>
+        <desc id="fig24-desc">横轴为存款创造的轮次，纵轴为该轮新增存款（元）。每一家银行只保留一部分准备金、贷出其余，借款人把贷款再存入下一家银行，因此每轮新增存款按几何级数递减，累计总额逼近 基础存款 × 货币乘数。</desc>
+        <line x1="90" y1="380" x2="620" y2="380" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="60" x2="90" y2="380" stroke="#334155" stroke-width="2"/>
+        <text x="24" y="54" font-size="13" fill="#334155">该轮新增存款（元）</text>
+        <text x="560" y="404" font-size="13" fill="#334155">轮次</text>
+        <text x="66" y="64" font-size="11" fill="#475569">1000</text>
+        <text x="74" y="384" font-size="11" fill="#475569">0</text>
+        <g id="bars" fill="#0ea5e9">
+            <rect x="110" y="60" width="30" height="320"/>
+            <rect x="160" y="92" width="30" height="288"/>
+            <rect x="210" y="120.8" width="30" height="259.2"/>
+            <rect x="260" y="146.7" width="30" height="233.3"/>
+            <rect x="310" y="170.1" width="30" height="210"/>
+            <rect x="360" y="191" width="30" height="189"/>
+            <rect x="410" y="209.9" width="30" height="170.1"/>
+            <rect x="460" y="227" width="30" height="153"/>
+            <rect x="510" y="242.3" width="30" height="137.8"/>
+            <rect x="560" y="256" width="30" height="124"/>
+        </g>
+    </svg>
+    <figcaption>图 24-1：横轴为存款创造的轮次，纵轴为该轮新增存款。每家银行只保留一部分准备金、贷出其余，借款人再存入下一家银行，因此新增存款按公比 (1−准备金率) 的几何级数递减，累计总额逼近<strong>基础存款 × 货币乘数</strong>。（教学示意：以本章示例基础存款 1000 元、准备金率 10% 绘制；累计 ≈10000 元。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="准备金率控制">
+    <label for="rr-slider">法定准备金率</label>
+    <input id="rr-slider" type="range" min="0.05" max="0.25" step="0.05" value="0.1" aria-describedby="rr-readout">
+    <button type="button" data-rr="0.05">低准备金 5%</button>
+    <button type="button" data-rr="0.1">基准 10%</button>
+    <button type="button" data-rr="0.2">高准备金 20%</button>
+    <output id="rr-readout" aria-live="polite">准备金率 = 10%：货币乘数 = 10.0，1000 元基础存款最终创造 ≈ 10,000 元货币供给。</output>
+</div>
+
+        <h2>24.3 传统货币政策工具</h2>
 
         <p>传统上，央行有三种主要的货币政策工具：</p>
 
@@ -115,7 +171,7 @@
 
         <p><strong>第三，公开市场操作（Open Market Operations, OMO）</strong>。这是最常用、最灵活的工具。央行在公开市场上买卖政府债券。买入债券时，央行的付款流入银行体系，增加银行准备金，扩大货币供给。卖出债券时则收回流动性、减少货币供给。美联储几乎每天的货币政策操作都是通过OMO完成的。</p>
 
-        <h3>24.4 2008年后的新货币政策工具</h3>
+        <h2>24.4 2008年后的新货币政策工具</h2>
 
         <p>2008年全球金融危机暴露了传统工具的局限性——当利率已经降到零附近时（Zero Lower Bound），央行无法再通过降息来刺激经济。于是，一系列非常规货币政策工具被创造出来：</p>
 
@@ -142,7 +198,7 @@
             <p><strong>争议焦点</strong>：2020年的"无限QE"到底是"救火"还是"纵火"？支持者认为，在流动性危机面前，央行必须不惜一切代价——吸取了2008年初期救助力度不足的教训。批评者则认为，如此大规模的货币扩张会导致道德风险、资产泡沫和通胀。这个辩论到今天仍在继续。现实可能是：没有"无限QE"，2020年的衰退会更严重；但2021-2022年的通胀也会更低。政策没有免费的午餐。</p>
         </div>
 
-        <h3>24.5 通胀目标制</h3>
+        <h2>24.5 通胀目标制</h2>
 
         <p>自1990年代起，越来越多的央行采用了<strong>通胀目标制</strong>（Inflation Targeting）作为货币政策框架。央行公开宣布一个通胀目标（通常为2%），并以此指导所有货币政策决策。这带来了几个关键好处：</p>
 
@@ -154,7 +210,7 @@
 
         <p>美联储在2012年正式采用了2%通胀目标（以PCE平减指数衡量）。欧洲央行的目标也是"接近但低于2%"。中国没有正式的通胀目标制，但央行会设定一个"预期目标"（通常为3%左右），在实际操作中参考。</p>
 
-        <h3>24.6 中国人民银行的独特工具箱</h3>
+        <h2>24.6 中国人民银行的独特工具箱</h2>
 
         <p>中国人民银行的操作体系与美联储有显著不同。这反映了中国金融体系的特点：银行主导、利率尚未完全市场化、资本账户管制。除了传统的准备金率和基准利率工具外，PBOC有一些独创的工具：</p>
 
@@ -224,7 +280,7 @@
             </tr>
         </table>
 
-        <h3>24.7 货币政策的局限与挑战</h3>
+        <h2>24.7 货币政策的局限与挑战</h2>
 
         <p>货币政策虽然强大，但不是万能的。这里有几个重要的局限需要记住：</p>
 
@@ -240,13 +296,51 @@
 
         <p>好了，这一章我们从货币的基本职能出发，走进了央行的政策工具箱——从传统的准备金率、贴现率、OMO，到危机后的QE、IORB，再到中国人民银行的MLF、LPR和结构性工具。下一章，我们将转向<strong>财政政策与国债</strong>——政府如何通过支出和税收来影响总需求，以及债务的可持续性问题。这两者（货币政策和财政政策）构成了宏观经济政策的两大支柱。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Milton Friedman &amp; Anna Schwartz (1963), <em>A Monetary History of the United States, 1867–1960</em>, NBER——货币供给与通胀长期关系的经典研究。</li>
+                <li>John B. Taylor (1993), <em>Discretion versus Policy Rules in Practice</em>, <em>Carnegie-Rochester Conference Series</em>，<a href="https://doi.org/10.1016/0167-2231(93)90009-L">doi:10.1016/0167-2231(93)90009-L</a>——政策规则与通胀目标制。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“货币与货币政策”相关章节。</li>
+                <li>Federal Reserve / 中国人民银行——QE、IOER、MLF、LPR 等工具与准备金政策的公开资料。</li>
+            </ul>
+            <p>图 24-1 直接沿用本章示例（基础存款 1000 元、准备金率 10%），货币乘数 =1/准备金率；QE 规模、利率与准备金率等数据引自央行公开资料与报道的概述性口径，未逐项核对原始时间序列。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="23.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="25.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('rr-slider');
+        var out = document.getElementById('rr-readout');
+        var bars = document.getElementById('bars');
+        if (!slider || !out || !bars) return;
+        // 教学示意：基础存款 1000 元，第 k 轮新增 = 1000*(1-rr)^(k-1)
+        var rects = bars.querySelectorAll('rect');
+        function draw(rr) {
+            var base = 1000, i, v, h;
+            for (i = 0; i < rects.length; i++) {
+                v = base * Math.pow(1 - rr, i);
+                h = v * 0.32;
+                rects[i].setAttribute('y', (380 - h).toFixed(1));
+                rects[i].setAttribute('height', h.toFixed(1));
+            }
+            var mm = 1 / rr, total = base * mm;
+            out.textContent = '准备金率 = ' + (rr * 100).toFixed(0) + '%：货币乘数 = ' + mm.toFixed(1)
+                + '，1000 元基础存款最终创造 ≈ ' + total.toLocaleString('en-US') + ' 元货币供给。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-rr'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
