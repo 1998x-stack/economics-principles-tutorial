@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第19章 国民收入核算</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #0f766e; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #134e4a; border-left: 6px solid #14b8a6; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #ecfdf5; border: 1px solid #99f6e4; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #115e59; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #115e59; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #5eead4; background: #ccfbf1; color: #115e59; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,10 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-
-<h2>第19章 国民收入核算</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第19章 国民收入核算</h1>
 
         <h2>19.1 欢迎来到宏观经济学世界</h2>
         <p>大家好，我是你们的讲师。从本章开始，我们将进入一个全新的领域——<strong>宏观经济学（Macroeconomics）</strong>。如果说微观经济学关心的是"一棵树"——单个消费者、单个企业、单个市场——那么宏观经济学关心的是"整片森林"：整个国家的经济总量如何运转、为什么有些国家富裕而有些贫穷、为什么会发生经济危机。</p>
@@ -88,6 +108,36 @@
 
         <div class="tip">
             <strong>💡 思考题：</strong>你可能会问——投资在中国GDP中的占比约28%，消费只有55%。而美国正好反过来，消费约占68%，投资约18%。这种结构差异说明了什么？中国经济增长更依赖投资驱动，而美国更依赖消费驱动。理解这个差异，就能看懂很多经济政策的方向。
+        </div>
+
+        <figure class="diagram" id="fig-gdp">
+            <svg viewBox="0 0 700 300" role="img" aria-labelledby="fig19-title fig19-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+                <title id="fig19-title">支出法下的GDP构成</title>
+                <desc id="fig19-desc">一条代表GDP总量的水平长条被分成四段：消费C约占55.8%，投资I约占28.6%，政府购买G约占15.4%，净出口NX约占0.2%。用于说明恒等式 Y = C + I + G + NX。</desc>
+                <text x="110" y="40" font-size="16" font-weight="700" fill="#134e4a">Y = C + I + G + NX（占GDP比重）</text>
+                <rect id="seg-c" x="110" y="60" width="290.2" height="70" fill="#0ea5e9"></rect>
+                <rect id="seg-i" x="400.2" y="60" width="148.7" height="70" fill="#f59e0b"></rect>
+                <rect id="seg-g" x="548.9" y="60" width="80.1" height="70" fill="#8b5cf6"></rect>
+                <rect id="seg-nx" x="629.0" y="60" width="1.0" height="70" fill="#e11d48"></rect>
+                <rect x="110" y="60" width="520" height="70" fill="none" stroke="#0f766e" stroke-width="1.5"></rect>
+                <text id="lbl-c" x="255" y="103" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">C 55.8%</text>
+                <text id="lbl-i" x="474" y="103" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">I 28.6%</text>
+                <text id="lbl-g" x="589" y="103" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">G 15.4%</text>
+                <line x1="110" y1="150" x2="110" y2="170" stroke="#334155"></line>
+                <line x1="630" y1="150" x2="630" y2="170" stroke="#334155"></line>
+                <text x="110" y="190" font-size="13" fill="#334155" text-anchor="middle">0%</text>
+                <text x="630" y="190" font-size="13" fill="#334155" text-anchor="middle">100%</text>
+                <text x="370" y="190" font-size="13" fill="#334155" text-anchor="middle">GDP 总量（2024年口径）</text>
+                <circle cx="130" cy="235" r="7" fill="#e11d48"></circle>
+                <text x="145" y="240" font-size="13" fill="#334155">NX 净出口仅 0.2%，几乎贴着右边缘——一条细线，却是贸易平衡的敏感指示器。</text>
+            </svg>
+            <figcaption>图 19-1：把GDP按支出法拆成四块。横条长度对应各部分占GDP的比重，四段之和恒等于总量。数据为2024年中国口径（国家统计局及相关机构公开数据的教学简化整理，未逐项核对原始年鉴）。</figcaption>
+        </figure>
+
+        <div class="controls" role="group" aria-label="GDP平减指数演示">
+            <label for="deflator-slider">物价水平指数（2023 = 100）</label>
+            <input id="deflator-slider" type="range" min="100" max="130" step="0.1" value="110.9" aria-describedby="deflator-readout">
+            <output id="deflator-readout" aria-live="polite">平减指数 = 110.9：名义GDP = 134,200 元，实际GDP = 121,000 元。</output>
         </div>
 
         <h2>19.4 名义GDP vs 实际GDP</h2>
@@ -186,13 +236,39 @@ print(f"GDP平减指数: {deflator:.1f}")
         </ul>
         <p>GDP是一个工具，不是目标。它就像体检时秤上的体重——很重要，但它不能告诉你你的胆固醇、血压、心率。下一章我们要学习的是另一个重要的宏观指标——<strong>生活成本与通胀</strong>。你的100元存款，在通胀面前，到底能买到什么？我们第20章见！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Simon Kuznets (1934), <em>National Income, 1929–1932</em>, 美国商务部报告——现代国民收入核算体系的奠基性工作。</li>
+                <li>国家统计局：国内生产总值（支出法）年度公开数据。<a href="https://www.stats.gov.cn/">stats.gov.cn</a></li>
+                <li>N. Gregory Mankiw.《经济学原理》——“一国收入的衡量”相关章节。</li>
+            </ul>
+            <p>图 19-1 与平减指数演示均为教学示意：四部分占比取自本章表格的2024年口径（公开统计的概述性数据），平减指数 = 名义GDP / 实际GDP × 100 为定义式，滑杆用于演示该定义，未引用具体年份的官方平减指数值。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="18.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="20.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('deflator-slider');
+        var out = document.getElementById('deflator-readout');
+        if (!slider || !out) return;
+        var real = 121000; // 2024年实际GDP（元），与本章表格一致
+        function fmt(n) { return n.toLocaleString('en-US'); }
+        function update() {
+            var idx = parseFloat(slider.value);
+            var nom = Math.round(real * idx / 100);
+            out.textContent = '平减指数 = ' + idx.toFixed(1) + '：名义GDP = ' + fmt(nom) + ' 元，实际GDP = ' + fmt(real) + ' 元。';
+        }
+        slider.addEventListener('input', update);
+        update();
+    })();
+    </script>
 </body>
 </html>
