@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第17章 信息不对称</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,8 +63,8 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-<h2>第17章 信息不对称</h2>
+    <main id="main" class="main-content">
+<h1>第17章 信息不对称</h1>
 
         <h2>17.1 信息本身就是一种稀缺资源</h2>
         <p>大家好，我是你们的讲师。前面两章我们讨论了外部性和公共物品——这些都是"价格信号不能反映全部社会成本"的问题。本章我们来看另一种市场失灵：<strong>信息不对称（Information Asymmetry）</strong>。</p>
@@ -60,6 +81,38 @@
         <p>假设二手车市场上有两种车：好车（"桃子"）和坏车（"柠檬"）。好车值10万元，坏车值5万元。卖家知道自己车的好坏，但买家无法分辨——只能根据平均质量来出价。如果市场上一半是好车一半是坏车，买家愿意出的价格是7.5万元（平均值）。</p>
 
         <p>问题来了：好车的车主觉得7.5万太低了——我的车值10万，凭什么只卖7.5万？于是好车车主退出市场。而坏车的车主很开心——我的车只值5万，居然能卖7.5万。结果是：好车逐渐离开市场，剩下的全是坏车。买家很快意识到这一点，进一步压低出价，于是更多好车退出。极端情况下，整个市场可能消失——因为逆向选择把好东西驱逐出了市场。</p>
+
+        <figure class="diagram" id="fig-lemon">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig17-title fig17-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig17-title">柠檬市场：买家愿付价格与好车保留价</title>
+        <desc id="fig17-desc">横轴为市场中好车所占比例 q（0 到 1），纵轴为价格（万元）。蓝色下降直线是买家基于平均质量愿付的价格 5+5q；红色水平线是好车卖家愿意出手的保留价 10 万元。两条线只在 q=1 处相交，只要好车比例低于 100%，买家出价就低于保留价，好车退出，市场向左滑向 q=0。</desc>
+        <line x1="90" y1="50" x2="90" y2="400" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="400" x2="660" y2="400" stroke="#334155" stroke-width="2"/>
+        <text x="30" y="44" font-size="14" fill="#334155">价格（万元）</text>
+        <text x="560" y="428" font-size="14" fill="#334155">好车比例 q</text>
+        <line x1="90" y1="116.7" x2="620" y2="116.7" stroke="#dc2626" stroke-width="3"/>
+        <text x="300" y="108" font-size="13" font-weight="700" fill="#b91c1c">好车保留价 = 10 万元</text>
+        <polyline points="90,258.3 620,116.7" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <text x="140" y="238" font-size="13" font-weight="700" fill="#0369a1">买家愿付 = 5 + 5q（万元）</text>
+        <line x1="620" y1="116.7" x2="620" y2="400" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5 5"/>
+        <text x="596" y="418" font-size="12" fill="#475569">q=1</text>
+        <path d="M600,146 L160,232" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="7 4" marker-end="url(#arr17)"/>
+        <defs><marker id="arr17" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7c3aed"/></marker></defs>
+        <text x="250" y="196" font-size="13" font-weight="700" fill="#6d28d9">好车退出，q 不断下降</text>
+        <line id="q-guide" x1="355" y1="187.5" x2="355" y2="400" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <circle id="wtp-dot" cx="355" cy="187.5" r="6" fill="#0ea5e9" stroke="#fff" stroke-width="2"/>
+    </svg>
+    <figcaption>图 17-1：买家只能按平均质量出价，愿付价格 = 5 + 5q 万元（q 为好车比例）；好车卖家坚持 10 万元的保留价（红线）。两条线仅在 q = 100% 相交：一旦好车比例不足，出价低于保留价，好车退出，q 继续下降，市场滑向 q=0（逆向选择“劣币驱逐良币”）。拖动滑杆观察市场位置。（教学示意：好车 10 万、坏车 5 万，买家风险中性。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="好车比例控制">
+    <label for="q-slider">市场中好车比例 q</label>
+    <input id="q-slider" type="range" min="0" max="100" step="5" value="50" aria-describedby="q-readout">
+    <button type="button" data-q="100">全部是好车 q=100%</button>
+    <button type="button" data-q="50">好坏各半 q=50%</button>
+    <button type="button" data-q="0">全是坏车 q=0%</button>
+    <output id="q-readout" aria-live="polite">q = 50%：买家愿付 7.5 万元，低于好车保留价 10 万元 → 好车退出，市场恶化。</output>
+</div>
 
         <h2>17.3 真实故事：为什么你的车一落地就贬值？</h2>
         <p>你一定听过这个"常识"：新车开出4S店，瞬间贬值15-20%。这不仅仅是折旧——它背后的经济学逻辑就是信息不对称。</p>
@@ -170,13 +223,52 @@
 
         <p>下一章我们将探讨<strong>税收与收入分配</strong>——政府如何通过税收制度筹集公共资金，以及这些制度如何影响社会的公平与效率。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>George Akerlof (1970), <em>The Market for “Lemons”: Quality Uncertainty and the Market Mechanism</em>, <em>QJE</em>，<a href="https://doi.org/10.2307/1879431">doi:10.2307/1879431</a>——柠檬市场与逆向选择。</li>
+                <li>Michael Spence (1973), <em>Job Market Signaling</em>, <em>QJE</em>，<a href="https://doi.org/10.2307/1882010">doi:10.2307/1882010</a>——教育作为能力信号。</li>
+                <li>Rothschild &amp; Stiglitz (1976), <em>Equilibrium in Competitive Insurance Markets</em>, <em>QJE</em>，<a href="https://doi.org/10.2307/1885326">doi:10.2307/1885326</a>——筛选与保险市场均衡。</li>
+                <li>Kenneth Arrow (1963), <em>Uncertainty and the Welfare Economics of Medical Care</em>, <em>AER</em>，<a href="https://doi.org/10.2307/1812044">doi:10.2307/1812044</a>——道德风险的早期论述。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“信息不对称”相关章节。</li>
+            </ul>
+            <p>图 17-1 采用教学示意参数：好车 10 万元、坏车 5 万元、买家风险中性；水滴筹审核与骗捐比例数据引自公开报道的概述性口径，未逐笔核对原始披露。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="16.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="18.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('q-slider');
+        var out = document.getElementById('q-readout');
+        if (!slider || !out) return;
+        // 教学示意：好车 10 万、坏车 5 万，风险中性下愿付价格 = 5 + 5q（万元）
+        function xp(q) { return 90 + 530 * q; }
+        function yp(p) { return 400 - (p / 12) * 340; }
+        function wtp(q) { return 5 + 5 * q; }
+        function draw(qPct) {
+            var q = qPct / 100, p = wtp(q), x = xp(q), y = yp(p);
+            var d = document.getElementById('wtp-dot');
+            d.setAttribute('cx', x); d.setAttribute('cy', y);
+            var g = document.getElementById('q-guide');
+            g.setAttribute('x1', x); g.setAttribute('x2', x);
+            var sell = p >= 10 - 1e-9;
+            out.textContent = 'q = ' + qPct + '%：买家愿付 ' + p.toFixed(1) + ' 万元，'
+                + (sell ? '达到好车保留价 10 万元 → 好车愿意出售，市场稳定。'
+                        : '低于好车保留价 10 万元 → 好车退出，市场恶化。');
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-q'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
