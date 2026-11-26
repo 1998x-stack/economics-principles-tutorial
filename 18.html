@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第18章 税收与收入分配</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,8 +63,8 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-<h2>第18章 税收与收入分配</h2>
+    <main id="main" class="main-content">
+<h1>第18章 税收与收入分配</h1>
 
         <h2>18.1 税收：文明的代价</h2>
         <p>大家好，我是你们的讲师。上一章我们讨论了信息不对称引起的市场失灵。本章我们讨论一个你无法逃避的话题——<strong>税收</strong>。本杰明·富兰克林说过："世界上只有两件事是确定的——死亡和税收。"税收不仅是一种财务安排，它深刻影响着每个人的行为、企业的决策、以及整个社会的公平与效率。</p>
@@ -111,6 +132,37 @@
             <li>0.4-0.5 = 高度不平等（许多拉美国家、非洲国家）</li>
             <li>0.5以上 = 极度不平等（少数国家）</li>
         </ul>
+
+        <figure class="diagram" id="fig-lorenz">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig18-title fig18-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig18-title">洛伦兹曲线与基尼系数</title>
+        <desc id="fig18-desc">横轴为按收入从低到高累计的人口百分比，纵轴为累计收入占比。灰色对角线是完全平等线；蓝色下凹曲线是实际洛伦兹曲线；两条线之间蓝色阴影面积占总三角形面积的比例即基尼系数。曲线越向下弯曲，不平等越严重。</desc>
+        <line x1="170" y1="390" x2="170" y2="50" stroke="#334155" stroke-width="2"/>
+        <line x1="170" y1="390" x2="520" y2="390" stroke="#334155" stroke-width="2"/>
+        <text x="96" y="46" font-size="13" fill="#334155">累计收入占比</text>
+        <text x="356" y="424" font-size="13" fill="#334155">累计人口占比</text>
+        <polygon id="gini-area" points="170,390 500,60 467,136.4 434,201.1 401,254.7 368,298.0 335,331.7 302,356.6 269,373.8 236,384.1 203,389.0 170,390" fill="#bfdbfe" fill-opacity="0.8"/>
+        <line x1="170" y1="390" x2="500" y2="60" stroke="#64748b" stroke-width="2.5" stroke-dasharray="8 4"/>
+        <text x="392" y="118" font-size="13" font-weight="700" fill="#475569">完全平等线（45°）</text>
+        <polyline id="lorenz-curve" points="170,390 203,389.0 236,384.1 269,373.8 302,356.6 335,331.7 368,298.0 401,254.7 434,201.1 467,136.4 500,60" fill="none" stroke="#0ea5e9" stroke-width="3.5"/>
+        <text x="222" y="330" font-size="13" font-weight="700" fill="#0369a1">实际洛伦兹曲线</text>
+        <text x="262" y="196" font-size="13" font-weight="700" fill="#1d4ed8">A = 基尼面积</text>
+        <text x="420" y="360" font-size="13" font-weight="700" fill="#334155">B</text>
+        <text x="170" y="410" font-size="11" fill="#475569">0</text>
+        <text x="492" y="410" font-size="11" fill="#475569">100%</text>
+        <text x="520" y="70" font-size="12" fill="#334155">基尼 = A /（A+B）</text>
+    </svg>
+    <figcaption>图 18-1：横轴为按收入从低到高累计的人口比例，纵轴为累计收入占比。45° 虚线是“完全平等线”；蓝线是实际洛伦兹曲线，越向下弯曲表示不平等越严重。基尼系数 = 两线之间面积 A / 三角形总面积（A+B）。拖动滑杆改变不平等程度。（教学示意：曲线族 L(p)=p<sup>α</sup>，基尼系数 =(α−1)/(α+1)。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="不平等程度控制">
+    <label for="alpha-slider">不平等程度 α（L(p)=p<sup>α</sup>）</label>
+    <input id="alpha-slider" type="range" min="1" max="4" step="0.1" value="2.5" aria-describedby="gini-readout">
+    <button type="button" data-a="1.5">较平等 Gini≈0.20</button>
+    <button type="button" data-a="2.5">中等 Gini≈0.43</button>
+    <button type="button" data-a="3.5">高度不平等 Gini≈0.56</button>
+    <output id="gini-readout" aria-live="polite">α = 2.50：基尼系数 = 0.43，洛伦兹曲线弯曲程度中等。</output>
+</div>
 
         <h2>18.7 基尼系数的计算示例</h2>
         <p>下面我们用Python风格的伪代码演示如何计算基尼系数。</p>
@@ -196,13 +248,55 @@ double gini = (perfectEqualityArea - lorenzArea) / perfectEqualityArea;
 
         <p>从下一章开始，我们将进入宏观经济学的世界。我们将首先学习<strong>国民收入核算</strong>——如何测量一个经济体生产的总价值。这是理解GDP、经济增速和经济周期的起点。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Max O. Lorenz (1905), <em>Methods of Measuring the Concentration of Wealth</em>, <em>Publications of the American Statistical Association</em>，<a href="https://doi.org/10.2307/2276207">doi:10.2307/2276207</a>——洛伦兹曲线的原始提出。</li>
+                <li>Corrado Gini (1921), <em>Measurement of Inequality of Incomes</em>, <em>The Economic Journal</em>，<a href="https://doi.org/10.2307/2223319">doi:10.2307/2223319</a>——基尼系数的原始定义。</li>
+                <li>Simon Kuznets (1955), <em>Economic Growth and Income Inequality</em>, <em>AER</em>，<a href="https://doi.org/10.2307/1811581">doi:10.2307/1811581</a>——经济增长与不平等关系的经典讨论。</li>
+                <li>国家统计局：全国居民收入基尼系数年度公开数据（2003 年起公布，2022 年约 0.467）。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“税收与收入分配”相关章节。</li>
+            </ul>
+            <p>图 18-1 曲线族 L(p)=p<sup>α</sup> 为教学示意，基尼系数 =(α−1)/(α+1)；各国税率、中国基尼系数与再分配政策数据引自公开统计与报道的概述性口径，未逐项核对原始年鉴。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="17.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="19.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('alpha-slider');
+        var out = document.getElementById('gini-readout');
+        var curve = document.getElementById('lorenz-curve');
+        var area = document.getElementById('gini-area');
+        if (!slider || !out || !curve || !area) return;
+        // 教学示意：洛伦兹曲线族 L(p)=p^α，基尼系数 =(α-1)/(α+1)
+        function X(p) { return 170 + 330 * p; }
+        function Y(inc) { return 390 - 330 * inc; }
+        function draw(a) {
+            var pts = [], i, p, inc;
+            for (i = 0; i <= 20; i++) {
+                p = i / 20;
+                inc = Math.pow(p, a);
+                pts.push(X(p).toFixed(1) + ',' + Y(inc).toFixed(1));
+            }
+            curve.setAttribute('points', pts.join(' '));
+            area.setAttribute('points', '170,390 500,60 ' + pts.slice().reverse().join(' '));
+            var gini = (a - 1) / (a + 1);
+            out.textContent = 'α = ' + a.toFixed(2) + '：基尼系数 = ' + gini.toFixed(2)
+                + '，洛伦兹曲线弯曲程度' + (gini < 0.3 ? '较低（较平等）。' : gini < 0.5 ? '中等。' : '较高（不平等显著）。');
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-a'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
