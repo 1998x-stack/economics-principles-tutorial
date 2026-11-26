@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第26章 失业与通胀的权衡</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,8 +63,8 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-        <h2>第26章 失业与通胀的权衡</h2>
+    <main id="main" class="main-content">
+        <h1>第26章 失业与通胀的权衡</h1>
 
         <p>大家好，我是你们的讲师。如果你完整经历了前面25章的学习，你可能已经注意到一个重要的缺失环节——我们谈了总需求与总供给（<a href="23.html">第23章</a>），谈了货币政策如何调控通胀（<a href="24.html">第24章</a>），谈了财政政策如何刺激经济（<a href="25.html">第25章</a>），但一直没有正面回答一个核心问题：<strong>控制通胀的代价是什么？</strong></p>
         <p>答案是：代价通常是失业。或者说，是牺牲一部分人的饭碗来换取物价的稳定。这种"牺牲"的性质、程度和持续时间，构成了宏观经济学中最重要的政策辩论之一。这一章我们就来深度拆解失业与通胀的关系。</p>
@@ -87,6 +108,37 @@
         <h3>短期菲利普斯曲线 vs 长期菲利普斯曲线</h3>
         <p>1960年代后期，弗里德曼（Milton Friedman）和费尔普斯（Edmund Phelps）分别提出了关键的理论修正：<strong>菲利普斯曲线在短期内是下降的，但长期内是垂直的。</strong></p>
         <p>逻辑是这样的：假设央行扩张货币来刺激经济。短期内，企业看到自己产品价格上涨，以为是需求增加，于是增加雇佣——失业下降，通胀上升。但工人很快意识到所有商品都在涨价，要求提高工资。企业成本上升，恢复到原本的雇佣水平——失业回到自然率，但通胀永久性地提高了。这就是<strong>自然率假说</strong>（Natural Rate Hypothesis）：长期内失业率由劳动力市场的结构性因素决定，与通胀水平无关。</p>
+
+        <figure class="diagram" id="fig-phillips">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig26-title fig26-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig26-title">菲利普斯曲线：短期替代与长期中性</title>
+        <desc id="fig26-desc">横轴为失业率 u，纵轴为通胀率 π。向下倾斜的蓝线是短期菲利普斯曲线，位置取决于预期通胀；在自然失业率 u*（约 5%）处的垂直虚线是长期菲利普斯曲线。提高预期通胀会把短期曲线上移，但在 u* 处失业率回到自然率，通胀却永久上升。</desc>
+        <line x1="90" y1="380" x2="620" y2="380" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="380" x2="90" y2="40" stroke="#334155" stroke-width="2"/>
+        <text x="30" y="34" font-size="13" fill="#334155">通胀率 π</text>
+        <text x="560" y="404" font-size="13" fill="#334155">失业率 u</text>
+        <text x="284" y="398" font-size="11" fill="#475569">u*</text>
+        <text x="66" y="252" font-size="11" fill="#475569">4%</text>
+        <text x="66" y="120" font-size="11" fill="#475569">8%</text>
+        <line x1="288.75" y1="40" x2="288.75" y2="380" stroke="#64748b" stroke-width="2.5" stroke-dasharray="8 4"/>
+        <text x="296" y="58" font-size="13" font-weight="700" fill="#475569">长期菲利普斯曲线（u*）</text>
+        <polyline id="pc-curve" points="90,149 553.8,380" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <text x="120" y="170" font-size="13" font-weight="700" fill="#0369a1">短期菲利普斯曲线</text>
+        <line id="pc-hguide" x1="90" y1="248" x2="288.75" y2="248" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="pc-dot" cx="288.75" cy="248" r="6" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+        <text id="pc-label" x="200" y="242" font-size="13" font-weight="700" fill="#0f172a">π = πₑ</text>
+    </svg>
+    <figcaption>图 26-1：横轴为失业率 u，纵轴为通胀率 π。向下倾斜的蓝线是<strong>短期菲利普斯曲线</strong>，其位置由预期通胀 π<sub>e</sub> 决定；在自然失业率 u*（示意为 5%）处的垂直虚线是<strong>长期菲利普斯曲线</strong>。提高预期通胀会把短期曲线上移，但在 u* 处失业率回到自然率、通胀却永久上升——这就是长期中性。拖动滑杆改变预期通胀。（教学示意：π = π<sub>e</sub> − (u − 5)，β=1。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="预期通胀控制">
+    <label for="pc-slider">预期通胀 π<sub>e</sub></label>
+    <input id="pc-slider" type="range" min="0" max="8" step="1" value="4" aria-describedby="pc-readout">
+    <button type="button" data-pe="0">锚定 π<sub>e</sub>=0%</button>
+    <button type="button" data-pe="4">基准 π<sub>e</sub>=4%</button>
+    <button type="button" data-pe="8">高预期 π<sub>e</sub>=8%</button>
+    <output id="pc-readout" aria-live="polite">πₑ = 4%：自然失业率 u*=5% 处实际通胀 = 4%；失业率每低于 u* 1 个百分点，通胀上升约 1 个百分点。</output>
+</div>
 
         <h3>真实故事：沃尔克时刻</h3>
         <p>1970年代末，美国通胀率高达两位数（1979年CPI同比上涨11.3%），失业率在6%左右。时任美联储主席的Paul Volcker做出了一个历史性的决定：<strong>用极高的利率来打压通胀。</strong></p>
@@ -177,13 +229,63 @@ print(f"估计NAIRU: {nairu:.2f}%")
 
         <p>下一章，我们将进入一个完全不同的讨论维度——<strong>行为经济学与经济学前沿</strong>。当人类理性的假设被放松，经济学会给我们带来哪些全新的洞见和挑战？我们拭目以待。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>A. W. Phillips (1958), <em>The Relation between Unemployment and the Rate of Change of Money Wage Rates in the United Kingdom, 1861–1957</em>, <em>Economica</em>，<a href="https://doi.org/10.2307/2550759">doi:10.2307/2550759</a>——原始菲利普斯曲线。</li>
+                <li>Milton Friedman (1968), <em>The Role of Monetary Policy</em>, <em>AER</em>，<a href="https://doi.org/10.2307/1818441">doi:10.2307/1818441</a>——自然率假说。</li>
+                <li>Edmund Phelps (1967), <em>Phillips Curves, Expectations of Inflation and Optimal Unemployment over Time</em>, <em>Economica</em>，<a href="https://doi.org/10.2307/2552025">doi:10.2307/2552025</a>——预期与长期中性。</li>
+                <li>Laurence Ball (1994), <em>What Determines the Sacrifice Ratio?</em>——反通胀代价（牺牲率）的量化研究。</li>
+                <li>U.S. BLS / Federal Reserve——1970 年代美国 CPI 与联邦基金利率历史数据。</li>
+            </ul>
+            <p>图 26-1 采用教学示意：π = π<sub>e</sub> − (u − 5)，β=1，自然失业率取 5%；沃尔克时期的通胀、失业与牺牲率数据引自公开统计与文献的概述性口径，未逐项核对原始数据库。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="25.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="27.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('pc-slider');
+        var out = document.getElementById('pc-readout');
+        var curve = document.getElementById('pc-curve');
+        var dot = document.getElementById('pc-dot');
+        if (!slider || !out || !curve || !dot) return;
+        // 教学示意：π = πe - (u-5)，β=1；像素映射 u→x=90+66.25(u-2)，π→y=380-33π
+        function Y(p) { return 380 - 33 * p; }
+        function seg(m, b) {
+            var xmin = 90, xmax = 620, ymin = 40, ymax = 380, cand = [];
+            var y1 = m * xmin + b, y2 = m * xmax + b;
+            if (y1 >= ymin && y1 <= ymax) cand.push([xmin, y1]);
+            if (y2 >= ymin && y2 <= ymax) cand.push([xmax, y2]);
+            var xa = (ymin - b) / m, xb = (ymax - b) / m;
+            if (xa >= xmin && xa <= xmax) cand.push([xa, ymin]);
+            if (xb >= xmin && xb <= xmax) cand.push([xb, ymax]);
+            if (cand.length < 2) return '';
+            cand.sort(function (a, c) { return a[0] - c[0]; });
+            var r = cand[cand.length - 1];
+            return cand[0][0].toFixed(1) + ',' + cand[0][1].toFixed(1) + ' ' + r[0].toFixed(1) + ',' + r[1].toFixed(1);
+        }
+        function draw(pe) {
+            var b = 236.17 - 33 * pe;
+            curve.setAttribute('points', seg(0.4981, b));
+            dot.setAttribute('cy', Y(pe));
+            var h = document.getElementById('pc-hguide'); h.setAttribute('y1', Y(pe)); h.setAttribute('y2', Y(pe));
+            document.getElementById('pc-label').setAttribute('y', Y(pe) - 6);
+            out.textContent = 'πₑ = ' + pe + '%：自然失业率 u*=5% 处实际通胀 = ' + pe
+                + '%；失业率每低于 u* 1 个百分点，通胀上升约 1 个百分点。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-pe'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
