@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第23章 总需求与总供给</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,14 +63,14 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-        <h2>第二十三章：总需求与总供给</h2>
+    <main id="main" class="main-content">
+        <h1>第23章 总需求与总供给</h1>
 
         <p>大家好，我是你们的讲师。在前几章里，我们一直在讨论长期经济增长——什么因素让一个经济体在几十年尺度上变得更富裕。但如果你看新闻，经济学家讨论的往往是短期问题：这个季度GDP增长为什么放缓？失业率为什么突然上升？这把我们带到了一个全新的领域——<strong>短期经济波动</strong>。</p>
 
         <p>这一章我们要引入宏观经济学中最重要的分析框架之一：<strong>AD-AS模型</strong>（总需求-总供给模型）。它就像是宏观经济学的"供需图"——只不过把微观里的"某种商品的价格和数量"，换成了"整体价格水平和总产出"。</p>
 
-        <h3>23.1 经济波动的特征</h3>
+        <h2>23.1 经济波动的特征</h2>
 
         <p>首先，我们需要理解短期经济波动的三个基本特征。第一个特征是<strong>不规则性</strong>——经济衰退的发生时间没有固定的周期。不像一年有四季，经济不是每四年或每十年必然衰退一次。第二个特征是<strong>不可预测性</strong>——绝大多数衰退都是在事后才被确认的，极少有经济学家能准确预测衰退的时点。第三个特征是<strong>传播的广泛性</strong>——当衰退发生时，它几乎会波及经济体的所有部门，从制造业到服务业，从就业到消费。</p>
 
@@ -59,7 +80,7 @@
 
         <p>那么，什么工具可以帮我们分析这些波动？答案是——AD-AS模型。</p>
 
-        <h3>23.2 总需求曲线（Aggregate Demand, AD）</h3>
+        <h2>23.2 总需求曲线（Aggregate Demand, AD）</h2>
 
         <p><strong>总需求</strong>（Aggregate Demand）是一个经济体中所有最终商品和服务的需求总和。从国民收入核算恒等式出发：</p>
 
@@ -79,7 +100,7 @@
             <p><strong>关键区分</strong>：以上三种效应解释的是"沿着AD曲线的移动"——价格水平变动导致总需求量的变化。这和"AD曲线的整体平移"是两回事。AD曲线平移是由价格水平之外的因素引起的——比如消费者信心变化、财政政策变动、或者国外经济形势变化。</p>
         </div>
 
-        <h3>23.3 总供给曲线（Aggregate Supply, AS）</h3>
+        <h2>23.3 总供给曲线（Aggregate Supply, AS）</h2>
 
         <p>总供给描绘的是经济体在不同价格水平下愿意生产的商品和服务总量。关键在于：<strong>在长期和短期内，总供给曲线的形状完全不同</strong>。</p>
 
@@ -97,13 +118,44 @@
             <p><strong>重要提醒</strong>：这三种理论都承认一个核心事实——在长期，所有这些"黏性"和"错觉"都会消失。工资会重新谈判，价格会全部调整，生产者会看清真实情况。这就是为什么长期总供给曲线是垂直的，而短期总供给曲线向右上倾斜。两者并不矛盾——它们回答的是不同时间维度上的问题。</p>
         </div>
 
-        <h3>23.4 AD-AS模型中的冲击与稳定</h3>
+        <h2>23.4 AD-AS模型中的冲击与稳定</h2>
 
         <p>当AD曲线或AS曲线受到外部冲击而发生移动时，经济就会偏离其长期均衡，产生波动。我们可以区分两种类型的冲击：</p>
 
         <p><strong>需求冲击（Demand Shock）</strong>：AD曲线移动。例如，消费者信心骤降导致消费减少（AD左移），短期内产出下降、价格水平下降。在长期，由于预期调整，SRAS会向右移动，经济回归潜在产出水平——但这个过程可能需要数季甚至数年。</p>
 
         <p><strong>供给冲击（Supply Shock）</strong>：AS曲线移动。例如，油价暴涨导致生产成本上升（SRAS左移），短期内产出下降但价格水平上升——这就是滞胀（Stagflation）的典型特征。政策制定者面临两难：如果刺激总需求来增加产出，会导致更严重的通胀；如果紧缩来抑制通胀，会导致更深的衰退。</p>
+
+        <figure class="diagram" id="fig-adas">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig23-title fig23-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig23-title">AD-AS 模型：短期均衡与产出缺口</title>
+        <desc id="fig23-desc">横轴为实际产出 Y，纵轴为价格水平 P。垂直虚线 LRAS 是长期总供给（潜在产出），向上倾斜的蓝线 SRAS 是短期总供给，向下倾斜的红线 AD 是总需求。AD 与 SRAS 的交点为短期均衡；当它位于 LRAS 左侧时存在衰退缺口，右侧时存在通胀缺口。</desc>
+        <line x1="90" y1="380" x2="620" y2="380" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="45" x2="90" y2="380" stroke="#334155" stroke-width="2"/>
+        <text x="40" y="40" font-size="13" fill="#334155">价格水平 P</text>
+        <text x="570" y="404" font-size="13" fill="#334155">实际产出 Y</text>
+        <line x1="430" y1="45" x2="430" y2="380" stroke="#64748b" stroke-width="2.5" stroke-dasharray="8 4"/>
+        <text x="438" y="62" font-size="13" font-weight="700" fill="#475569">LRAS（潜在产出）</text>
+        <polyline id="sras-line" points="150,340 600,120" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <text x="150" y="112" font-size="13" font-weight="700" fill="#0369a1">SRAS</text>
+        <polyline id="ad-curve" points="150,115 605,342" fill="none" stroke="#dc2626" stroke-width="3"/>
+        <text x="560" y="336" font-size="14" font-weight="700" fill="#b91c1c">AD</text>
+        <line id="eq-hguide" x1="90" y1="228.7" x2="377.5" y2="228.7" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <line id="eq-vguide" x1="377.5" y1="228.7" x2="377.5" y2="380" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="ad-dot" cx="377.5" cy="228.7" r="6" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+        <text id="ad-label" x="330" y="222" font-size="13" font-weight="700" fill="#0f172a">短期均衡</text>
+    </svg>
+    <figcaption>图 23-1：横轴为实际产出 Y，纵轴为价格水平 P。垂直虚线 LRAS 表示潜在产出，向上倾斜的蓝线是短期总供给 SRAS，向下倾斜的红线是总需求 AD。AD 与 SRAS 的交点是<strong>短期均衡</strong>：位于 LRAS 左侧为衰退缺口，右侧为通胀缺口。拖动滑杆移动总需求，观察产出与价格水平如何变动。（教学示意：线性 AD/SRAS，Y 以“潜在产出=100”的指数表示。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="总需求冲击控制">
+    <label for="ad-slider">总需求冲击 AD</label>
+    <input id="ad-slider" type="range" min="-90" max="70" step="10" value="0" aria-describedby="ad-readout">
+    <button type="button" data-ad="-90">紧缩 AD 左移</button>
+    <button type="button" data-ad="0">基准</button>
+    <button type="button" data-ad="70">扩张 AD 右移</button>
+    <output id="ad-readout" aria-live="polite">基准：短期产出指数 85（潜在产出=100），存在衰退缺口约 15%，价格水平居中。</output>
+</div>
 
         <h4>故事：2008年全球金融危机</h4>
 
@@ -172,7 +224,7 @@
             </tr>
         </table>
 
-        <h3>23.5 AD-AS均衡模型示例</h3>
+        <h2>23.5 AD-AS均衡模型示例</h2>
 
         <p>以下是一个简化的AD-AS均衡数值模型。它可以帮助你理解冲击如何在模型中传导：</p>
 
@@ -208,7 +260,7 @@ LRAS = Y* = 2000（长期潜在产出）
   0.25Y = 537.5
   Y = 2150  →  超过潜在产出（通胀压力）</code></pre>
 
-        <h3>23.6 稳定政策的争议</h3>
+        <h2>23.6 稳定政策的争议</h2>
 
         <p>既然AD-AS模型表明政府可以通过需求管理来平滑经济波动，那是不是应该积极使用？这里存在深刻的学术分歧，也是宏观经济学最经典的辩论之一。</p>
 
@@ -220,13 +272,67 @@ LRAS = Y* = 2000（长期潜在产出）
 
         <p>好了，这一章我们搭建了理解经济波动的核心框架——AD-AS模型。下一章我们将深入讨论这个模型中最重要的政策工具之一：<strong>货币政策与央行</strong>。理解了央行如何影响总需求，你就掌握了宏观经济政策的一半精髓。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Milton Friedman (1968), <em>The Role of Monetary Policy</em>, <em>AER</em>，<a href="https://doi.org/10.2307/1818441">doi:10.2307/1818441</a>——短期与长期总供给、预期调整。</li>
+                <li>Robert Lucas (1976), <em>Econometric Policy Evaluation: A Critique</em>，<a href="https://doi.org/10.1016/S0167-2231(76)80003-6">doi:10.1016/S0167-2231(76)80003-6</a>——理性预期与政策无效性。</li>
+                <li>Financial Crisis Inquiry Commission (2011), <em>The Financial Crisis Inquiry Report</em>——2008 年需求冲击的官方调查。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“总需求与总供给”相关章节。</li>
+            </ul>
+            <p>图 23-1 采用教学示意：线性 AD/SRAS，Y 以“潜在产出=100”的指数表示；2008 年与 2020 年产出、失业数据引自公开统计与报道的概述性口径，未逐项核对原始数据库。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="22.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="24.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('ad-slider');
+        var out = document.getElementById('ad-readout');
+        var adCurve = document.getElementById('ad-curve');
+        var dot = document.getElementById('ad-dot');
+        if (!slider || !out || !adCurve || !dot) return;
+        // 教学示意：SRAS 为线性 y=413.3-0.489x；AD 过均衡点、斜率 0.5
+        function srasY(x) { return 413.3 - 0.489 * x; }
+        function seg(m, b) {
+            var xmin = 150, xmax = 605, ymin = 58, ymax = 376, cand = [];
+            var y1 = m * xmin + b, y2 = m * xmax + b;
+            if (y1 >= ymin && y1 <= ymax) cand.push([xmin, y1]);
+            if (y2 >= ymin && y2 <= ymax) cand.push([xmax, y2]);
+            var xa = (ymin - b) / m, xb = (ymax - b) / m;
+            if (xa >= xmin && xa <= xmax) cand.push([xa, ymin]);
+            if (xb >= xmin && xb <= xmax) cand.push([xb, ymax]);
+            if (cand.length < 2) return '';
+            cand.sort(function (a, c) { return a[0] - c[0]; });
+            var r = cand[cand.length - 1];
+            return cand[0][0].toFixed(1) + ',' + cand[0][1].toFixed(1) + ' ' + r[0].toFixed(1) + ',' + r[1].toFixed(1);
+        }
+        function draw(s) {
+            var x = 377.5 + s, y = srasY(x), b = y - 0.5 * x;
+            adCurve.setAttribute('points', seg(0.5, b));
+            dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+            var h = document.getElementById('eq-hguide'); h.setAttribute('x2', x); h.setAttribute('y1', y); h.setAttribute('y2', y);
+            var v = document.getElementById('eq-vguide'); v.setAttribute('x1', x); v.setAttribute('x2', x); v.setAttribute('y1', y);
+            var lb = document.getElementById('ad-label'); lb.setAttribute('x', x - 48); lb.setAttribute('y', y - 6);
+            var idx = (x - 90) / 340 * 100, gap = 100 - idx;
+            var msg = gap > 0.5 ? '存在衰退缺口约 ' + gap.toFixed(0) + '%'
+                     : gap < -0.5 ? '存在通胀缺口约 ' + (-gap).toFixed(0) + '%'
+                     : '恰好位于潜在产出';
+            out.textContent = (s === 0 ? '基准' : s > 0 ? '扩张（AD 右移）' : '紧缩（AD 左移）')
+                + '：短期产出指数 ' + idx.toFixed(0) + '（潜在产出=100），' + msg + '。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-ad'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
