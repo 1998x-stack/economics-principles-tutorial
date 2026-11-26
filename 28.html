@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第28章 综合实践项目</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #4c1d95; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #4c1d95; border-left: 6px solid #8b5cf6; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .main-content h2, .main-content h3, .main-content h4, .main-content p, .main-content li { overflow-wrap: anywhere; }
+        .main-content h2 { font-size: 1.3rem; }
+        .main-content h3 { font-size: 1.1rem; }
+        .diagram { margin: 20px 0; padding: 12px; background: #f5f3ff; border: 1px solid #ddd6fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #4c1d95; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #c4b5fd; background: #ede9fe; color: #4c1d95; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        .table-scroll { overflow-x: auto; max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,9 +65,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html" class="active">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-        <h2>第28章 综合实践项目</h2>
+    </nav>
+    <main id="main" class="main-content">
+        <h1>第28章 综合实践项目</h1>
 
         <p>大家好，我是你们的讲师。欢迎来到这门课程的最后一章。如果你一路坚持读到这里——恭喜你！你已经系统地学习了从微观经济学基础到宏观政策分析，从市场失灵到前沿议题的完整知识体系。这一章不是为了"学新知识"，而是为了"融会贯通"。</p>
         <p>我们将通过<strong>三个真实的综合实践项目</strong>，让你把自己放在"经济学家"的位置上，用前27章的工具来分析真实世界的经济问题。每个项目提供背景、数据和分析框架——但真正的思考需要你来完成。</p>
@@ -101,6 +125,34 @@
 
         <h2>28.4 全书回顾：像经济学家一样思考</h2>
         <p>经过28章的学习，你掌握了一套完整的经济学分析工具。但工具再多，如果不理解背后的思维方式，也只是死记硬背。让我们提炼出<strong>经济思维的五个层次</strong>，作为一个思维框架来帮助你以后面对任何经济问题：</p>
+
+        <figure class="diagram" id="fig-levels">
+            <svg viewBox="0 0 640 320" role="img" aria-labelledby="fig28-title fig28-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+                <title id="fig28-title">经济思维的五个层次</title>
+                <desc id="fig28-desc">自下而上叠加的五层结构：最底层是“稀缺与选择”，往上依次是“激励与反应”“市场与效率”“总量与波动”，最顶层是“制度与演化”。越往上层，分析的范围越宏观、越长期。</desc>
+                <rect id="lvl5" x="170" y="20" width="300" height="46" rx="8" fill="#c4b5fd"></rect>
+                <text x="320" y="49" font-size="15" font-weight="700" fill="#312e81" text-anchor="middle">⑤ 制度与演化</text>
+                <rect id="lvl4" x="140" y="74" width="360" height="46" rx="8" fill="#a78bfa"></rect>
+                <text x="320" y="103" font-size="15" font-weight="700" fill="#312e81" text-anchor="middle">④ 总量与波动</text>
+                <rect id="lvl3" x="110" y="128" width="420" height="46" rx="8" fill="#8b5cf6"></rect>
+                <text x="320" y="157" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">③ 市场与效率</text>
+                <rect id="lvl2" x="80" y="182" width="480" height="46" rx="8" fill="#7c3aed"></rect>
+                <text x="320" y="211" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">② 激励与反应</text>
+                <rect id="lvl1" x="50" y="236" width="540" height="46" rx="8" fill="#5b21b6"></rect>
+                <text x="320" y="265" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">① 稀缺与选择</text>
+                <text x="110" y="305" font-size="12" fill="#64748b">越往上：越宏观、越长期</text>
+            </svg>
+            <figcaption>图 28-1：五个思维层次不是相互替代，而是层层叠加——下层是上层的地基，上层为下层提供约束与边界。分析任何经济问题时，从哪一层切入，取决于问题的尺度。（教学示意：本图为作者给出的学习框架，非某篇论文的原始模型。）</figcaption>
+        </figure>
+
+        <div class="controls" role="group" aria-label="经济思维五个层次">
+            <button type="button" data-lvl="1">① 稀缺与选择</button>
+            <button type="button" data-lvl="2">② 激励与反应</button>
+            <button type="button" data-lvl="3">③ 市场与效率</button>
+            <button type="button" data-lvl="4">④ 总量与波动</button>
+            <button type="button" data-lvl="5">⑤ 制度与演化</button>
+            <output id="level-readout" aria-live="polite">⑤ 制度与演化：经济活动发生在特定的制度框架内；理解制度的边界，并在边界内寻找改进空间。</output>
+        </div>
 
         <h3>第一层：稀缺与选择</h3>
         <p>一切经济问题的起点。资源稀缺意味着我们必须做出选择——个人选择如何消费，企业选择如何生产，政府选择如何分配。<strong>机会成本</strong>是每一选择背后被放弃的价值。这一层的核心追问是："多与少"的问题，而不是"有与无"的问题。</p>
@@ -223,13 +275,49 @@ simulate_market()
             <p>再见，加油！期待在经济学更深处与你重逢。</p>
         </div>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>William Nordhaus, <em>The Climate Casino</em>（2013）与 DICE 模型——“社会碳成本（SCC）”与气候经济学的贴现率讨论。</li>
+                <li>Nicholas Stern (2007), <em>The Economics of Climate Change: The Stern Review</em>——低贴现率的气候政策立场的代表。</li>
+                <li>Daron Acemoglu &amp; Simon Johnson, <em>Power and Progress</em>（2023）——AI 时代技术变革与共享繁荣。</li>
+                <li>以上书单与作者引用均为本章教学建议的概述，具体年份、页码未逐项核对原始版本。</li>
+            </ul>
+            <p>图 28-1“经济思维的五个层次”与本页三个综合实践项目的分析框架为作者给出的教学框架，不属某篇论文的原始模型；项目涉及的估算数据（如碳中和累计投资、隐性债务规模）为本章的概述性口径。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="27.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="javascript:void(0)">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var descs = {
+            1: '① 稀缺与选择：一切经济问题的起点。核心追问是“多与少”而非“有与无”，机会成本是每一选择背后被放弃的价值。',
+            2: '② 激励与反应：人们会对激励做出反应。分析任何政策时，先问“这会改变什么人的什么激励？”',
+            3: '③ 市场与效率：在竞争、产权清晰、信息对称、无外部性的条件下，价格机制可实现资源最优配置；否则可能市场失灵。',
+            4: '④ 总量与波动：关注 GDP、通胀、就业、利率等宏观变量，以及短期波动与长期增长；个体理性的加总未必带来总体理性。',
+            5: '⑤ 制度与演化：经济活动嵌入在法律、文化、政治、技术构成的制度框架内；理解制度的边界，并在边界内寻找改进空间。'
+        };
+        var out = document.getElementById('level-readout');
+        var btns = [].slice.call(document.querySelectorAll('.controls button[data-lvl]'));
+        if (!out || !btns.length) return;
+        function select(lv) {
+            out.textContent = descs[lv];
+            for (var i = 1; i <= 5; i++) {
+                var el = document.getElementById('lvl' + i);
+                if (el) el.setAttribute('stroke', i === lv ? '#f59e0b' : 'none'), el.setAttribute('stroke-width', i === lv ? 3 : 0);
+            }
+        }
+        btns.forEach(function (b) {
+            b.addEventListener('click', function () { select(parseInt(b.getAttribute('data-lvl'), 10)); });
+        });
+        select(5);
+    })();
+    </script>
 </body>
 </html>
