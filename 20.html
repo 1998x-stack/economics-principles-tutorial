@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第20章 生活成本与通胀</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #9a3412; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #7c2d12; border-left: 6px solid #f97316; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #fff7ed; border: 1px solid #fed7aa; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #9a3412; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #9a3412; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #fdba74; background: #ffedd5; color: #9a3412; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -41,10 +62,9 @@
             <li><a href="27.html">第27章 行为经济学与前沿</a></li>
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
-    </div>
-    <div class="main-content">
-
-<h2>第20章 生活成本与通胀</h2>
+    </nav>
+    <main id="main" class="main-content">
+<h1>第20章 生活成本与通胀</h1>
 
         <h2>20.1 你的100元还值100元吗？</h2>
         <p>大家好，我是你们的讲师。我有个问题想问你：你还记得你小时候一碗牛肉面多少钱吗？我上大学的时候学校门口的兰州拉面只要5块钱一碗。现在你再去看看——没有15块钱根本下不来。这就是<strong>通货膨胀（Inflation）</strong>最直观的体验：<strong>钱不值钱了</strong>。</p>
@@ -80,6 +100,36 @@
             <strong>💡 权重的意义：</strong>如果猪肉在中国CPI中权重高，那么猪肉涨价就会显著推高中国通胀。2020年非洲猪瘟导致猪肉价格翻倍，直接拉高中国CPI约2个百分点——这就是为什么央行和政策制定者需要密切关注CPI构成。
         </div>
 
+        <figure class="diagram" id="fig-cpi">
+            <svg viewBox="0 0 700 420" role="img" aria-labelledby="fig20-title fig20-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+                <title id="fig20-title">中、美CPI消费篮子权重对比</title>
+                <desc id="fig20-desc">横向分组柱状图比较中国与美国CPI各消费类别的权重：食品烟酒中国约30%远高于美国约13%；居住美国约33%高于中国约23%；其余类别比例接近。中、美篮子结构不同，同一商品涨价对两国通胀的影响也不同。</desc>
+                <text x="110" y="30" font-size="16" font-weight="700" fill="#7c2d12">CPI 消费篮子权重：中国 vs 美国</text>
+                <rect x="110" y="42" width="16" height="16" fill="#ea580c"></rect><text x="132" y="55" font-size="13" fill="#334155">中国</text>
+                <rect x="180" y="42" width="16" height="16" fill="#2563eb"></rect><text x="202" y="55" font-size="13" fill="#334155">美国</text>
+                <line x1="100" y1="70" x2="100" y2="360" stroke="#334155" stroke-width="1.5"></line>
+                <text x="90" y="82" font-size="13" fill="#334155" text-anchor="end">食品烟酒</text>
+                <rect x="120" y="70" width="390" height="15" fill="#ea580c"></rect><rect x="120" y="88" width="169" height="15" fill="#2563eb"></rect>
+                <text x="516" y="82" font-size="12" fill="#7c3aed">30%</text><text x="295" y="100" font-size="12" fill="#2563eb">13%</text>
+                <text x="90" y="134" font-size="13" fill="#334155" text-anchor="end">居住</text>
+                <rect x="120" y="122" width="299" height="15" fill="#ea580c"></rect><rect x="120" y="140" width="429" height="15" fill="#2563eb"></rect>
+                <text x="425" y="134" font-size="12" fill="#ea580c">23%</text><text x="555" y="152" font-size="12" fill="#2563eb">33%</text>
+                <text x="90" y="186" font-size="13" fill="#334155" text-anchor="end">交通通信</text>
+                <rect x="120" y="174" width="169" height="15" fill="#ea580c"></rect><rect x="120" y="192" width="195" height="15" fill="#2563eb"></rect>
+                <text x="295" y="186" font-size="12" fill="#ea580c">13%</text><text x="321" y="204" font-size="12" fill="#2563eb">15%</text>
+                <text x="90" y="238" font-size="13" fill="#334155" text-anchor="end">教育文娱</text>
+                <rect x="120" y="226" width="143" height="15" fill="#ea580c"></rect><rect x="120" y="244" width="78" height="15" fill="#2563eb"></rect>
+                <text x="269" y="238" font-size="12" fill="#ea580c">11%</text><text x="204" y="256" font-size="12" fill="#2563eb">6%</text>
+                <text x="90" y="290" font-size="13" fill="#334155" text-anchor="end">医疗保健</text>
+                <rect x="120" y="278" width="117" height="15" fill="#ea580c"></rect><rect x="120" y="296" width="104" height="15" fill="#2563eb"></rect>
+                <text x="243" y="290" font-size="12" fill="#ea580c">9%</text><text x="230" y="308" font-size="12" fill="#2563eb">8%</text>
+                <text x="90" y="342" font-size="13" fill="#334155" text-anchor="end">其他</text>
+                <rect x="120" y="330" width="39" height="15" fill="#ea580c"></rect><rect x="120" y="348" width="221" height="15" fill="#2563eb"></rect>
+                <text x="165" y="342" font-size="12" fill="#ea580c">3%</text><text x="347" y="360" font-size="12" fill="#2563eb">17%</text>
+            </svg>
+            <figcaption>图 20-1：中国家庭的“吃”占比高，美国家庭的“住”占比高。同一次涨价，在两个篮子里的权重不同，对两国CPI的影响也就不同。（教学示意：权重数据为本章表格的概述性口径。）</figcaption>
+        </figure>
+
         <h2>20.3 CPI的偏差——统计局低估了通胀吗？</h2>
         <p>你有没有这种感觉——官方公布的通胀率看起来不高（比如中国近年CPI多在0-3%之间），但你自己感觉生活成本涨得很厉害？这不是你的错觉。CPI存在一些系统性的<strong>偏差（Biases）</strong>，导致它可能低估了真实的物价上涨：</p>
 
@@ -105,6 +155,14 @@
             <li><strong>实际利率（Real Interest Rate）：</strong>剔除通胀后，你真正的购买力增长。</li>
         </ul>
         <p>用费雪方程：如果名义利率3%，通胀率5%，那么实际利率 = 3% - 5% = -2%。你的存款实际在缩水！这就是为什么长期高通胀对一个国家的储户来说是"隐形税收"——你的钱放在银行，躺在那，但一天比一天不值钱。</p>
+
+        <div class="controls" role="group" aria-label="费雪方程演示">
+            <label for="nom-rate">名义利率（%）</label>
+            <input id="nom-rate" type="range" min="0" max="10" step="0.5" value="3" aria-describedby="fisher-readout">
+            <label for="infl-rate">通胀率（%）</label>
+            <input id="infl-rate" type="range" min="0" max="10" step="0.5" value="5" aria-describedby="fisher-readout">
+            <output id="fisher-readout" aria-live="polite">实际利率 ≈ 3.0% − 5.0% = −2.0%（购买力在缩水）。</output>
+        </div>
 
         <h2>20.5 通胀的再分配效应——谁赢谁输？</h2>
         <p>通胀不是"所有人都均匀地少买5%的东西"。它像一场静悄悄的财富再分配——有人赢，有人输：</p>
@@ -207,13 +265,41 @@ for year in [2024, 2025]:
         </ul>
         <p>理解了物价水平和实际利率，我们就可以进入下一个宏大的话题——<strong>长期经济增长</strong>。为什么一些国家在几十年内实现了爆炸式增长，而另一些国家却停滞不前？第21章见！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Irving Fisher (1930), <em>The Theory of Interest</em>——名义利率与实际利率关系的经典表述（费雪方程）。</li>
+                <li>国家统计局 / 美国劳工统计局（BLS）：居民消费价格指数（CPI）权重与构成公开数据。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“生活费用的衡量”相关章节。</li>
+            </ul>
+            <p>图 20-1 的两国权重为本章表格的概述性口径，未逐项核对原始年鉴；费雪方程演示用近似式 实际利率 ≈ 名义利率 − 通胀率，为教学示意。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="19.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="21.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var nom = document.getElementById('nom-rate');
+        var inf = document.getElementById('infl-rate');
+        var out = document.getElementById('fisher-readout');
+        if (!nom || !inf || !out) return;
+        function update() {
+            var n = parseFloat(nom.value);
+            var i = parseFloat(inf.value);
+            var r = n - i;
+            var tone = r < 0 ? '（购买力在缩水）' : (r === 0 ? '（购买力持平）' : '（购买力在增长）');
+            out.textContent = '实际利率 ≈ ' + n.toFixed(1) + '% − ' + i.toFixed(1) + '% = ' + r.toFixed(1) + '%' + tone + '。';
+        }
+        nom.addEventListener('input', update);
+        inf.addEventListener('input', update);
+        update();
+    })();
+    </script>
 </body>
 </html>
