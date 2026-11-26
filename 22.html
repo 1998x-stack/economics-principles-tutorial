@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第22章 储蓄、投资与金融</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,9 +63,8 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-
-<h2>第22章 储蓄、投资与金融</h2>
+    <main id="main" class="main-content">
+<h1>第22章 储蓄、投资与金融</h1>
 
         <h2>22.1 金融体系——经济的"血液循环系统"</h2>
         <p>大家好，我是你们的讲师。上一章我们谈到经济增长需要投资——建工厂、买机器、做研发。但钱从哪里来？答案是：<strong>金融体系（Financial System）</strong>。它就像经济的血液循环系统——把资金从有多余资金的人（储蓄者）输送到需要资金的人（借款者、投资者）那里。</p>
@@ -62,6 +82,38 @@
         <div class="tip">
             <strong>💡 中国的高储蓄率现象：</strong>中国的国民储蓄率长期在40%以上（世界平均约25%），这意味着GDP的40%以上被储蓄起来用于投资。这是中国过去几十年基建狂魔、制造业快速扩张的金融基础。但高储蓄率的另一面是消费不足——这也是中国经济正在努力转型的方向。
         </div>
+
+        <figure class="diagram" id="fig-loanable">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig22-title fig22-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig22-title">可贷资金市场的均衡与实际利率</title>
+        <desc id="fig22-desc">横轴为可贷资金量 Q，纵轴为实际利率 r。向上倾斜的蓝色线是可贷资金供给（来自储蓄），向下倾斜的红色线是可贷资金需求（来自投资）。两线交点决定均衡实际利率 r* 与均衡资金量 Q*。储蓄减少（供给左移）会推高利率、减少投资量。</desc>
+        <line x1="90" y1="380" x2="620" y2="380" stroke="#334155" stroke-width="2"/>
+        <line x1="90" y1="380" x2="90" y2="60" stroke="#334155" stroke-width="2"/>
+        <text x="40" y="54" font-size="13" fill="#334155">实际利率 r</text>
+        <text x="560" y="404" font-size="13" fill="#334155">可贷资金量 Q</text>
+        <text x="70" y="384" font-size="11" fill="#475569">0%</text>
+        <text x="66" y="224" font-size="11" fill="#475569">4%</text>
+        <text x="66" y="64" font-size="11" fill="#475569">8%</text>
+        <line x1="130" y1="110" x2="600" y2="330" stroke="#dc2626" stroke-width="3"/>
+        <text x="360" y="318" font-size="13" font-weight="700" fill="#b91c1c">需求：投资</text>
+        <polyline id="lf-supply" points="130,320 600,140" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <text x="360" y="164" font-size="13" font-weight="700" fill="#0369a1">供给：储蓄</text>
+        <line id="lf-hguide" x1="90" y1="225" x2="377" y2="225" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <line id="lf-vguide" x1="377" y1="225" x2="377" y2="380" stroke="#94a3b8" stroke-width="1.3" stroke-dasharray="5 5"/>
+        <circle id="lf-dot" cx="377" cy="225" r="6" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+        <text id="lf-label" x="387" y="218" font-size="13" font-weight="700" fill="#0f172a">均衡 r*</text>
+    </svg>
+    <figcaption>图 22-1：横轴为可贷资金量 Q，纵轴为实际利率 r。向上倾斜的蓝线是<strong>供给（储蓄）</strong>，向下倾斜的红线是<strong>需求（投资）</strong>，交点给出均衡实际利率 r* 与均衡资金量 Q*。当政府赤字或消费上升使储蓄减少、供给左移时，利率被推高、投资量下降——这就是“挤出效应”的雏形（第 25 章详述）。（教学示意：线性供需，利率 0–8%，Q 为示意单位。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="可贷资金供给移动控制">
+    <label for="lf-slider">储蓄供给移动</label>
+    <input id="lf-slider" type="range" min="-1" max="1" step="0.25" value="0" aria-describedby="lf-readout">
+    <button type="button" data-shift="-1">政府赤字↑（供给左移）</button>
+    <button type="button" data-shift="0">基准</button>
+    <button type="button" data-shift="1">储蓄↑（供给右移）</button>
+    <output id="lf-readout" aria-live="polite">基准：均衡实际利率 r* = 3.9%，可贷资金量 Q* = 54（示意单位）。</output>
+</div>
 
         <h2>22.3 金融中介——把零钱变巨款</h2>
         <p>储蓄者和借款者之间不会"直接对接"（你不可能把2,000块直接借给那个开奶茶店的小王）。金融体系中有三类关键的<strong>金融中介（Financial Intermediaries）</strong>：</p>
@@ -174,13 +226,51 @@ else:
         </ul>
         <p>好了，至此我们完成了宏观经济学"长期"部分的学习：国民收入核算、通胀、经济增长、储蓄与投资。下一章我们将进入宏观经济的"短期"世界——<strong>总需求与总供给（AD-AS模型）</strong>。为什么经济会有周期？为什么会出现衰退和繁荣？第23章见！</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Douglas Diamond &amp; Philip Dybvig (1983), <em>Bank Runs, Deposit Insurance, and Liquidity</em>, <em>JPE</em>，<a href="https://doi.org/10.1086/261155">doi:10.1086/261155</a>——银行挤兑与存款保险的理论基础。</li>
+                <li>Financial Crisis Inquiry Commission (2011), <em>The Financial Crisis Inquiry Report</em>——2008 年金融危机的官方调查记录。</li>
+                <li>国家统计局：国民储蓄率与居民储蓄相关公开数据。</li>
+                <li>N. Gregory Mankiw.《经济学原理》——“储蓄、投资与金融体系”相关章节。</li>
+            </ul>
+            <p>图 22-1 采用教学示意：线性可贷资金供需、利率范围 0–8%、资金量为示意单位；中国储蓄率与蚂蚁集团暂缓上市等数据引自公开统计与报道的概述性口径，未逐项核对原始文件。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="21.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="23.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('lf-slider');
+        var out = document.getElementById('lf-readout');
+        var supply = document.getElementById('lf-supply');
+        var dot = document.getElementById('lf-dot');
+        if (!slider || !out || !supply || !dot) return;
+        // 教学示意：供需线均线性；供给端点随 t 水平平移±80px
+        function draw(t) {
+            var sx = t * 80;
+            supply.setAttribute('points', (130 + sx) + ',320 ' + (600 + sx) + ',140');
+            var x = 376.8 + 0.45 * sx, y = 225.4 + 0.2106 * sx;
+            dot.setAttribute('cx', x); dot.setAttribute('cy', y);
+            var h = document.getElementById('lf-hguide'); h.setAttribute('x2', x); h.setAttribute('y1', y); h.setAttribute('y2', y);
+            var v = document.getElementById('lf-vguide'); v.setAttribute('x1', x); v.setAttribute('x2', x);
+            var lb = document.getElementById('lf-label'); lb.setAttribute('x', x + 10); lb.setAttribute('y', y - 8);
+            var q = (x - 90) / 5.3, rate = (380 - y) / 40;
+            out.textContent = (t === 0 ? '基准' : t > 0 ? '储蓄增加（供给右移）' : '政府赤字（供给左移）')
+                + '：均衡实际利率 r* = ' + rate.toFixed(1) + '%，可贷资金量 Q* = ' + q.toFixed(0) + '（示意单位）。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-shift'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
