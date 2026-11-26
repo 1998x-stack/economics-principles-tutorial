@@ -5,11 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
     <title>第27章 行为经济学与前沿</title>
     <link rel="stylesheet" href="theme.css">
+    <style>
+        .skip-link { position: absolute; left: -999px; top: 0; background: #3730a3; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 0; z-index: 10; }
+        .skip-link:focus { left: 0; }
+        .main-content { min-width: 0; }
+        .main-content h1 { font-size: 1.7rem; color: #312e81; border-left: 6px solid #6366f1; padding-left: 15px; margin: 10px 0 18px; line-height: 1.3; }
+        .diagram { margin: 20px 0; padding: 12px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 16px; }
+        .diagram svg { display: block; width: 100%; height: auto; }
+        .diagram figcaption { margin-top: 8px; font-size: .9rem; color: #3730a3; line-height: 1.6; overflow-wrap: anywhere; }
+        .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 6px; }
+        .controls label { font-weight: 600; color: #3730a3; font-size: .92rem; }
+        .controls output { font-weight: 700; color: #0c4a6e; }
+        button { padding: 6px 14px; border-radius: 999px; border: 1px solid #a5b4fc; background: #e0e7ff; color: #3730a3; font-weight: 600; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+        .refs { margin: 24px 0 0; padding: 16px 20px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; font-size: .92rem; }
+        .refs li { color: #334155; }
+        pre { overflow-x: auto; max-width: 100%; }
+        svg, img { max-width: 100%; }
+        @media print { .sidebar, .footer-nav, .controls { display: none; } }
+        @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    </style>
 </head>
 <body>
+<a class="skip-link" href="#main">跳到正文</a>
 <div class="double-border">
 <div class="container">
-    <div class="sidebar">
+    <nav class="sidebar" aria-label="课程目录">
         <h3>📈 课程目录</h3>
         <ul class="chapter-list">
             <li><a href="01.html">第1章 经济学十大原理</a></li>
@@ -42,8 +63,8 @@
             <li><a href="28.html">第28章 综合实践项目</a></li>
         </ul>
     </div>
-    <div class="main-content">
-        <h2>第27章 行为经济学与前沿</h2>
+    <main id="main" class="main-content">
+        <h1>第27章 行为经济学与前沿</h1>
 
         <p>大家好，我是你们的讲师。前面26章我们学习的经济学，无论微观还是宏观，都建立在一个核心假设之上：人是理性的。理性人知道自己的偏好，能做出最优决策，不会被情绪或偏见左右。但是从今天开始，我们要打开一扇新的大门——<strong>当理性假设被放松，经济学会变成什么样子？</strong></p>
         <p>这一章我们探索行为经济学以及经济学面临的最新前沿议题——从AI对劳动力市场的冲击到气候变化的经济分析，从数字货币的兴起到2026年的最新趋势。</p>
@@ -105,6 +126,35 @@ print(f"获得20的正效用: {gain_20:.2f}")
 print(f"损失/收益比率: {ratio:.2f}")
 print(f"意味着需要获得约{20*ratio:.0f}元才能抵消损失20元的痛苦")
 </code></pre>
+
+        <figure class="diagram" id="fig-prospect">
+    <svg viewBox="0 0 700 440" role="img" aria-labelledby="fig27-title fig27-desc" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+        <title id="fig27-title">前景理论价值函数</title>
+        <desc id="fig27-desc">横轴为相对参照点的得失 x（元），纵轴为主观价值 V(x)。收益区间（x 大于 0）的蓝色曲线向上凹（敏感度递减）；损失区间（x 小于 0）的红色曲线向下凹且更陡峭（损失厌恶）。两条分支在原点处形成一个拐点，损失一侧的坡度明显大于收益一侧。</desc>
+        <line x1="90" y1="200" x2="620" y2="200" stroke="#334155" stroke-width="1.8"/>
+        <line x1="350" y1="60" x2="350" y2="375" stroke="#334155" stroke-width="1.8"/>
+        <text x="560" y="222" font-size="13" fill="#334155">得失 x（元）</text>
+        <text x="356" y="56" font-size="13" fill="#334155">主观价值 V(x)</text>
+        <text x="600" y="196" font-size="11" fill="#475569">+100</text>
+        <text x="96" y="196" font-size="11" fill="#475569">−100</text>
+        <text x="338" y="196" font-size="11" fill="#475569">0</text>
+        <polyline id="gain-curve" points="350,200 374,191.7 398,184.6 422,178.1 446,171.7 470,165.6 494,159.6 518,153.8 542,148.0 566,142.3 590,136.7" fill="none" stroke="#0ea5e9" stroke-width="3"/>
+        <text x="500" y="128" font-size="13" font-weight="700" fill="#0369a1">收益（凹）</text>
+        <polyline id="loss-curve" points="350,200 326,218.8 302,234.6 278,249.4 254,263.6 230,277.4 206,290.9 182,304.0 158,317.0 134,329.8 110,342.5" fill="none" stroke="#dc2626" stroke-width="3"/>
+        <text x="150" y="360" font-size="13" font-weight="700" fill="#b91c1c">损失（陡）</text>
+        <text x="360" y="216" font-size="12" fill="#475569">参照点</text>
+    </svg>
+    <figcaption>图 27-1：横轴是相对参照点的得失 x（元），纵轴是主观价值 V(x)。收益一侧（蓝）向上凹，损失一侧（红）向下凹而且明显更陡——即<strong>损失厌恶</strong>；两条分支在原点（参照点）形成拐点，体现了<strong>参照点依赖</strong>与<strong>敏感度递减</strong>。拖动滑杆改变损失厌恶系数 λ，观察损失曲线上翘的程度。（教学示意：V=x<sup>0.88</sup>，V=−λ·(−x)<sup>0.88</sup>。）</figcaption>
+</figure>
+
+<div class="controls" role="group" aria-label="损失厌恶系数控制">
+    <label for="lambda-slider">损失厌恶系数 λ</label>
+    <input id="lambda-slider" type="range" min="1" max="3" step="0.25" value="2.25" aria-describedby="lambda-readout">
+    <button type="button" data-lam="1">中性 λ=1</button>
+    <button type="button" data-lam="2.25">K&T 估计 λ=2.25</button>
+    <button type="button" data-lam="3">强损失厌恶 λ=3</button>
+    <output id="lambda-readout" aria-live="polite">λ = 2.25：损失 100 元的负效用约 −130，收益 100 元约 +58；需约 251 元收益才能抵消 100 元损失。</output>
+</div>
 
         <h2>27.3 传统经济学 vs 行为经济学</h2>
 
@@ -181,13 +231,56 @@ print(f"意味着需要获得约{20*ratio:.0f}元才能抵消损失20元的痛�
         <p>行为经济学告诉我们：人是复杂的、有偏见的、会犯系统性错误——但这不意味着经济学模型无用，而是意味着我们需要更丰富的模型。前沿议题告诉我们：世界在快速变化，AI、气候、数字货币都在重塑经济格局。</p>
         <p>下一章——也就是这门课程的最后一章——我们将把前面所有27章的知识运用到<strong>三个综合实践案例</strong>中。这是我们整个学习旅程的毕业设计，不见不散。</p>
 
+        <section class="refs" aria-labelledby="refs-title">
+            <h2 id="refs-title">本章资料来源</h2>
+            <ul>
+                <li>Daniel Kahneman &amp; Amos Tversky (1979), <em>Prospect Theory: An Analysis of Decision under Risk</em>, <em>Econometrica</em>，<a href="https://doi.org/10.2307/1914185">doi:10.2307/1914185</a>——前景理论原始论文。</li>
+                <li>Amos Tversky &amp; Daniel Kahneman (1992), <em>Advances in Prospect Theory: Cumulative Representation of Uncertainty</em>, <em>Journal of Risk and Uncertainty</em>，<a href="https://doi.org/10.1007/BF00122574">doi:10.1007/BF00122574</a>——α、β≈0.88 与 λ≈2.25 参数估计。</li>
+                <li>Richard Thaler &amp; Cass Sunstein (2008), <em>Nudge</em>——助推与自由意志家长主义。</li>
+                <li>Behavioural Insights Team (UK)——公共政策中的行为科学实践。</li>
+            </ul>
+            <p>图 27-1 采用教学示意：V=x<sup>0.88</sup>、V=−λ·(−x)<sup>0.88</sup>（参数取自 Tversky &amp; Kahneman 1992）；AI 对劳动力市场冲击、英国行为洞察小组案例等数据引自公开研究与报道的概述性口径，未逐项核对原始数据集。</p>
+        </section>
+
         <div class="footer-nav">
             <a href="26.html">← 上一章</a>
             <a href="index.html">📖 返回目录</a>
             <a href="28.html">下一章 →</a>
         </div>
-    </div>
+    </main>
 </div>
 </div>
+    <script>
+    (function () {
+        var slider = document.getElementById('lambda-slider');
+        var out = document.getElementById('lambda-readout');
+        var lossCurve = document.getElementById('loss-curve');
+        if (!slider || !out || !lossCurve) return;
+        // 教学示意：V(x)=x^0.88 (x>=0)，V(x)=-λ(-x)^0.88 (x<0)
+        var alpha = 0.88, lam = 2.25;
+        function X(xv) { return 350 + 2.4 * xv; }
+        function Y(v) { return 200 - 1.1 * v; }
+        function negV(x) { return -lam * Math.pow(x, alpha); }
+        function draw(l) {
+            lam = l;
+            var pts = [], i, v;
+            for (i = 100; i >= 0; i -= 10) {
+                v = negV(i);
+                pts.push(X(-i).toFixed(1) + ',' + Y(v).toFixed(1));
+            }
+            lossCurve.setAttribute('points', pts.join(' '));
+            var g100 = Math.pow(100, alpha);
+            var need = 100 * Math.pow(l, 1 / alpha);
+            out.textContent = 'λ = ' + l + '：损失 100 元的负效用约 ' + negV(100).toFixed(0)
+                + '，收益 100 元约 +' + g100.toFixed(0)
+                + '；需约 ' + need.toFixed(0) + ' 元收益才能抵消 100 元损失。';
+        }
+        slider.addEventListener('input', function () { draw(Number(slider.value)); });
+        Array.prototype.forEach.call(document.querySelectorAll('.controls button'), function (b) {
+            b.addEventListener('click', function () { slider.value = b.getAttribute('data-lam'); draw(Number(slider.value)); });
+        });
+        draw(Number(slider.value));
+    })();
+    </script>
 </body>
 </html>
